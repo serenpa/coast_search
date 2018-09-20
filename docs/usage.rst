@@ -2,6 +2,6 @@
 Usage
 ========
 
-To use coast in a project::
+To use coast_search in a project::
 
-    import coast
+    import coast_search

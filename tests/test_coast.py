@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-test_coast
+test_coast_search
 ----------------------------------
 
-Tests for `coast` module.
+Tests for `coast_search` module.
 """
 
 import unittest
 
-import coast
+import coast_search
 
 
 class TestCoast(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestCoast(unittest.TestCase):
         pass
 
     def test_something(self):
-        assert(coast.__version__)
+        assert(coast_search.__version__)
 
     def tearDown(self):
         pass

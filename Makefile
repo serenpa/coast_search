@@ -44,7 +44,7 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source coast setup.py test
+	coverage run --source coast_search setup.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html

@@ -31,7 +31,7 @@ project_root = os.path.dirname(cwd)
 # version is used.
 sys.path.insert(0, project_root)
 
-import coast
+import coast_search
 
 # -- General configuration ---------------------------------------------
 
@@ -208,8 +208,8 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'coast.tex',
-     u'coast Documentation',
+    ('index', 'coast_search.tex',
+     u'coast_search Documentation',
      u'Ashley Williams', 'manual'),
 ]
 
@@ -239,8 +239,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'coast',
-     u'coast Documentation',
+    ('index', 'coast_search',
+     u'coast_search Documentation',
      [u'Ashley Williams'], 1)
 ]
 
@@ -254,10 +254,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'coast',
-     u'coast Documentation',
+    ('index', 'coast_search',
+     u'coast_search Documentation',
      u'Ashley Williams',
-     'coast',
+     'coast_search',
      'One line description of project.',
      'Miscellaneous'),
 ]

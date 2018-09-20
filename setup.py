@@ -25,7 +25,7 @@ test_requirements = [
 ]
 
 setup(
-    name='coast',
+    name='coast_search',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="Credible Online Article Search Tool",
