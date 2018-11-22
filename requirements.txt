@@ -1,0 +1,9 @@
+six
+bs4
+html5lib
+textstat
+nltk
+language_check
+textblob
+langdetect
+sphinx_rtd_theme

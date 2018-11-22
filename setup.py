@@ -1,52 +1,62 @@
-"""A setuptools based setup module for coast"""
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from codecs import open
-from os import path
+"""The setup script."""
+
 from setuptools import setup, find_packages
 
-import versioneer
-
-here = path.abspath(path.dirname(__file__))
-
-with open(path.join(here, 'README.rst'), encoding='utf-8') as readme_file:
+with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-with open(path.join(here, 'HISTORY.rst'), encoding='utf-8') as history_file:
-    history = history_file.read().replace('.. :changelog:', '')
+with open('HISTORY.rst') as history_file:
+    history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    "six",
+    "bs4",
+    "html5lib",
+    "textstat",
+    "nltk",
+    "language_check",
+    "textblob",
+    "langdetect"
+]
+
+setup_requirements = [
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+]
+
+dependency_links = [
 ]
 
 setup(
-    name='coast_search',
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
-    description="Credible Online Article Search Tool",
-    long_description=readme + '\n\n' + history,
     author="Ashley Williams",
     author_email='ashley.williams@pg.canterbury.ac.nz',
-    url='https://github.com/zedrem/coast',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    include_package_data=True,
-    install_requires=requirements,
-    license="MIT",
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6'
+        'Programming Language :: Python :: 3.6',
     ],
+    description="Core functionality of COAST",
+    install_requires=requirements,
+    license="MIT license",
+    long_description=readme + '\n\n' + history,
+    include_package_data=True,
+    keywords='coast_core',
+    name='coast_core',
+    packages=find_packages(include=['coast_core']),
+    setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
+    url='https://github.com/zedrem/coast_core',
+    version='1.0.0',
+    zip_safe=False,
+    dependency_links=dependency_links
 )
