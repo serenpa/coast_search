@@ -11,6 +11,7 @@ import sys
 import os
 
 from coast_search import utils
+from coast_search import query_generator
 
 from time import time, sleep
 from datetime import date
@@ -161,7 +162,39 @@ def generate_query_strings(topic_strings, reason_indicators, experience_indicato
     return result_list
 
 
+def add_api_config_to_queries(generated_query_strings, search_engines):
+    """
+        Merges the two parameters and returns a list of dicts that include the
+        api config.
+        Args:
+            generated_query_strings: The output from the generate_query_strings
+                                     function.
+            search_engines: The search engines list that is found in the
+                            api_config file. See the documentation for usage
+                            guidelines (http://coast_search.readthedocs.io/).
+        Returns:
+            result_list: A modified version of the output from the
+                         generate_query_strings function. The list will now
+                         also contain the required api config.
+    """
+    result_list = []
 
+    for query_object in generated_query_strings:
+        segment_id = query_object["segment_id"]
+        logic = query_object["logic"]
+        query_string = query_object["query"]
+
+        for se in search_engines:
+            if se["segment_id"] == segment_id:
+                result_list.append({
+                    "segment_id": segment_id,
+                    "logic": logic,
+                    "query_string": query_string,
+                    "se_name": se["name"],
+                    "api_key": se["api_key"],
+                    "search_engine_id": se["search_engine_id"]
+                })
+    return result_list
 
 
 def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
@@ -378,14 +411,13 @@ def run_daily_search(config_file):
     day = (todays_date - start_date).days + 1
 
     # Get the queries and indicators
-    topic_indicators = utils.get_from_file(config['topic_file'])
-    reasoning_indicators = utils.get_from_file(config['reasoning_file'])
-    experience_indicators = utils.get_from_file(config['experience_file'])
+    dimensions_dict = utils.get_from_file_list(config['dimensions'])
 
     # Now generate query string for each segment
-    generated_query_strings = generate_query_strings(topic_indicators, reasoning_indicators, experience_indicators)
+    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict)
 
     # Get API config and place it into list of dictionaries
+    #TODO move this into query_generator file???
     api_config = utils.get_json_from_file(config['api_details_file'])
     search_engines = api_config['search_engines']
     query_dict_list = add_api_config_to_queries(generated_query_strings, search_engines)

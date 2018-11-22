@@ -13,50 +13,50 @@
     - measures_utils.py
 
 """
-from coast.utils import db_utils
-from coast.utils import file_utils
-from coast.utils import measures_utils
-from coast.utils import lang_utils
+# from coast_search.utils import db_utils
+from coast_search.utils import file_utils
+# from coast_search.utils import measures_utils
+# from coast_search.utils import lang_utils
 
 
-def get_db(db_url, db_client):
-    """
-        Given the url and client (db) for a MongoDB, will return a DB object.
-
-        Args:
-            db_url: The url of the MongoDB
-            db_client: The name of the specific Mongo client to use.
-
-        Returns:
-            db: A pymongo database object that allows interaction between
-                python and MongoDB
-
-        Err:
-            In the event of an error, the error is printed to the stdout and
-            program execution is halted.
-    """
-    return db_utils.get_db(db_url, db_client)
-
-
-def clean_db(db, collections):
-    """
-        Given the url and client (db) for a MongoDB, will return a DB object.
-
-        Args:
-            db_url: The url of the MongoDB
-            db_client: The name of the specific Mongo client to use.
-
-        Returns:
-            db: A pymongo database object that allows interaction between
-                python and MongoDB
-
-        Err:
-            In the event of an error, the error is printed to the stdout and
-            program execution is halted.
+# def get_db(db_url, db_client):
+#     """
+#         Given the url and client (db) for a MongoDB, will return a DB object.
+#
+#         Args:
+#             db_url: The url of the MongoDB
+#             db_client: The name of the specific Mongo client to use.
+#
+#         Returns:
+#             db: A pymongo database object that allows interaction between
+#                 python and MongoDB
+#
+#         Err:
+#             In the event of an error, the error is printed to the stdout and
+#             program execution is halted.
+#     """
+#     return db_utils.get_db(db_url, db_client)
 
 
-    """
-    db_utils.clean_db(db, collections)
+# def clean_db(db, collections):
+#     """
+#         Given the url and client (db) for a MongoDB, will return a DB object.
+#
+#         Args:
+#             db_url: The url of the MongoDB
+#             db_client: The name of the specific Mongo client to use.
+#
+#         Returns:
+#             db: A pymongo database object that allows interaction between
+#                 python and MongoDB
+#
+#         Err:
+#             In the event of an error, the error is printed to the stdout and
+#             program execution is halted.
+#
+#
+#     """
+#     db_utils.clean_db(db, collections)
 
 
 def get_from_file(filename):
@@ -92,47 +92,52 @@ def get_json_from_file(filename):
     return file_utils.get_json_from_file(filename)
 
 
-def draw_progress_bar(percent, bar_len=20):
-    """
-        Given a percentage, will print a progress bar to the console. Useful
-        for reporting progress on large calculations.
+def get_from_file_list(file_list):
+    """"""
+    return file_utils.get_from_file_list(file_list)
 
-        Args:
-            percent: The percent of the calculation that is complete.
-            bar_len: How long the progress bar that is displayed should be.
-                     Default is 20 characters.
-
-        Returns:
-            Nothing, output is printed to the stdout.
-    """
-    measures_utils.draw_progress_bar(percent, bar_len)
-
-
-def penn_treebank_filter(article_text, filter_list, exception_list=[]):
-    """
-        Returns a list of tuples that are tagged with any
-	    penn treebank tag from the filter list.
-
-        Args:
-            article_text: The text to analyse
-            filter_list: The tags to return.
-
-        Returns:
-            result: A list of words containing any of the tags in the filter
-                    list.
-    """
-    return lang_utils.penn_treebank_filter(article_text, filter_list, exception_list)
+#
+# def draw_progress_bar(percent, bar_len=20):
+#     """
+#         Given a percentage, will print a progress bar to the console. Useful
+#         for reporting progress on large calculations.
+#
+#         Args:
+#             percent: The percent of the calculation that is complete.
+#             bar_len: How long the progress bar that is displayed should be.
+#                      Default is 20 characters.
+#
+#         Returns:
+#             Nothing, output is printed to the stdout.
+#     """
+#     measures_utils.draw_progress_bar(percent, bar_len)
 
 
-def get_ngrams(text, number):
-    """
-        Split a given body of text into ngrams.
+# def penn_treebank_filter(article_text, filter_list, exception_list=[]):
+#     """
+#         Returns a list of tuples that are tagged with any
+# 	    penn treebank tag from the filter list.
+#
+#         Args:
+#             article_text: The text to analyse
+#             filter_list: The tags to return.
+#
+#         Returns:
+#             result: A list of words containing any of the tags in the filter
+#                     list.
+#     """
+#     return lang_utils.penn_treebank_filter(article_text, filter_list, exception_list)
 
-        Args:
-            text: The body of text to operate on.
-            number: Specify the size of the ngram (e.g unigram, bigram etc)
 
-        Return:
-            A list of ngrams.
-    """
-    return lang_utils.get_ngrams(text, number)
+# def get_ngrams(text, number):
+#     """
+#         Split a given body of text into ngrams.
+#
+#         Args:
+#             text: The body of text to operate on.
+#             number: Specify the size of the ngram (e.g unigram, bigram etc)
+#
+#         Return:
+#             A list of ngrams.
+#     """
+#     return lang_utils.get_ngrams(text, number)

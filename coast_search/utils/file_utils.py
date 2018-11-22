@@ -9,6 +9,7 @@
 """
 import sys
 import json
+from pathlib import Path
 
 
 def get_from_file(filename):
@@ -32,6 +33,21 @@ def get_from_file(filename):
     res = []
     for line in lines:
         res.append(line.replace('"', "'").replace('\n', ''))
+
+    return res
+
+
+def get_from_file_list(file_list):
+    """
+    Given a list of file names, reads from each of these and returns... something?
+    :param file_list:
+    :return:
+    """
+    res = {}
+    # want a dictionary with filename: list of words
+    for file in file_list:
+        words = get_from_file(file)
+        res[Path(file).stem] = words
 
     return res
 

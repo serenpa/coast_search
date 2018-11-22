@@ -246,7 +246,7 @@ def check_length(seed, random, query_words, key_max):
     if total_words <= key_max:
         return True
     else:
-        print("The maxiumum number of keywords is:", key_max, "\nYou have:", total_words)
+        print("The maximum number of keywords is:", key_max, "\nYou have:", total_words)
         return False
 
 
