@@ -1,0 +1,4 @@
+{
+    "dimensions": ["./search_dimensions/topic.txt","./search_dimensions/reasoning.txt","./search_dimensions/experience.txt"],
+    "max_keywords": 32
+}
