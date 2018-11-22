@@ -28,101 +28,6 @@ def replace_last(source_string, replace_what, replace_with):
     return head + replace_with + tail
 
 
-def get_random_query(topic_strings, reason_indicators, experience_indicators):
-    """
-    Segment 1 uses a random seed query. This function creates that seed
-    query using the random_words library and returns it.
-    Notes:
-        1. The random query returned wont contain any word that exists in
-        any topic string or indicator list.
-        2. The random query string will always be three words long.
-    Args:
-        topic_strings: The topic strings being used for the search.
-        reasoning_indicators: The reasoning indicators being used for the
-        search.
-        experience_indicators: The experience indicators being used for the
-        search.
-    Returns:
-        qs: The generated random query.
-    """
-    topic_list = []
-    for topic_string in topic_strings:
-        topic_words = topic_string.split()
-        for word in topic_words:
-            topic_list.append(word)
-
-    stop_list = topic_list + reason_indicators, experience_indicators
-    # print(stop_list)
-
-    rw = RandomWords()
-
-    flag = False
-
-    while (flag == False):
-        words = rw.random_words(count=3)
-
-        flag2 = True
-        for word in words:
-            if word in stop_list:
-                flag2 = False
-
-        if flag2 == True:
-            flag = True
-
-        # print(words)
-
-    qs = '"'
-    for word in words:
-        qs += word + ' '
-        qs = replace_last(qs, ' ', '"')
-
-    # print("Random query: " + qs)
-    return qs
-
-
-def pos_query_segment(phrase_list):
-    """
-        Given a list of phrases, returns a string of all the phrases AND'd
-        together.
-        e.g. ("but" AND "because" AND "however")
-        Args:
-            phrase_list: a list of phrases (e.g. reasoning/experience
-                         indicators)
-        Returns:
-            result_string: a string of all phrases AND'd together ready for a
-                           search engine.
-    """
-    result_string = "("
-
-    for phrase in phrase_list:
-        result_string += '"' + phrase + '" OR '
-
-    # Now remove the last AND
-    result_string = result_string[:-4]
-    result_string += ")"
-
-    return result_string
-
-
-def neg_query_segment(phrase_list):
-    """
-        Given a list of phrases, returns a string of all the phrases negated.
-        e.g. -"but" -"because" -"however"
-        Args:
-            phrase_list: a list of phrases (e.g. reasoning/experience
-                         indicators)
-        Returns:
-            result_string: a string of all phrases AND'd together ready for a
-                           search engine.
-    """
-    result_string = ""
-
-    for phrase in phrase_list:
-        result_string += '-"' + phrase + '" '
-
-    return result_string
-
-
 def generate_query_strings(topic_strings, reason_indicators, experience_indicators, seg_9_seed="software engineering"):
     """
         Generates the query string for each segment and returns as a list of
@@ -256,39 +161,7 @@ def generate_query_strings(topic_strings, reason_indicators, experience_indicato
     return result_list
 
 
-def add_api_config_to_queries(generated_query_strings, search_engines):
-    """
-        Merges the two parameters and returns a list of dicts that include the
-        api config.
-        Args:
-            generated_query_strings: The output from the generate_query_strings
-                                     function.
-            search_engines: The search engines list that is found in the
-                            api_config file. See the documentation for usage
-                            guidelines (http://coast_search.readthedocs.io/).
-        Returns:
-            result_list: A modified version of the output from the
-                         generate_query_strings function. The list will now
-                         also contain the required api config.
-    """
-    result_list = []
 
-    for query_object in generated_query_strings:
-        segment_id = query_object["segment_id"]
-        logic = query_object["logic"]
-        query_string = query_object["query"]
-
-        for se in search_engines:
-            if se["segment_id"] == segment_id:
-                result_list.append({
-                    "segment_id": segment_id,
-                    "logic": logic,
-                    "query_string": query_string,
-                    "se_name": se["name"],
-                    "api_key": se["api_key"],
-                    "search_engine_id": se["search_engine_id"]
-                })
-    return result_list
 
 
 def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):

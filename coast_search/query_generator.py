@@ -153,6 +153,41 @@ def generate_result_list(dimensions_data, dimensions, seed, random):
     return result_list
 
 
+def add_api_config_to_queries(generated_query_strings, search_engines):
+    """
+        Merges the two parameters and returns a list of dicts that include the
+        api config.
+        Args:
+            generated_query_strings: The output from the generate_query_strings
+                                     function.
+            search_engines: The search engines list that is found in the
+                            api_config file. See the documentation for usage
+                            guidelines (http://coast_search.readthedocs.io/).
+        Returns:
+            result_list: A modified version of the output from the
+                         generate_query_strings function. The list will now
+                         also contain the required api config.
+    """
+    result_list = []
+
+    for query_object in generated_query_strings:
+        segment_id = query_object["segment_id"]
+        logic = query_object["logic"]
+        query_string = query_object["query"]
+
+        for se in search_engines:
+            if se["segment_id"] == segment_id:
+                result_list.append({
+                    "segment_id": segment_id,
+                    "logic": logic,
+                    "query_string": query_string,
+                    "se_name": se["name"],
+                    "api_key": se["api_key"],
+                    "search_engine_id": se["search_engine_id"]
+                })
+    return result_list
+
+
 def generate_query_strings_n_dimensions(dimensions_dict, seed, key_max):
     """
    Given dimensions and associated words, the seg1 seed and the max length of query,
