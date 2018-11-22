@@ -12,14 +12,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    "six",
-    "bs4",
-    "html5lib",
-    "textstat",
-    "nltk",
-    "language_check",
-    "textblob",
-    "langdetect"
+
 ]
 
 setup_requirements = [
@@ -35,7 +28,7 @@ setup(
     author="Ashley Williams",
     author_email='ashley.williams@pg.canterbury.ac.nz',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
@@ -44,19 +37,19 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    description="Core functionality of COAST",
+    description="Search functionality of COAST",
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='coast_core',
-    name='coast_core',
-    packages=find_packages(include=['coast_core']),
+    keywords='coast_search',
+    name='coast_search',
+    packages=find_packages(include=['coast_search']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/zedrem/coast_core',
-    version='1.0.0',
+    url='https://github.com/zedrem/coast_search',
+    version='0.0.1',
     zip_safe=False,
     dependency_links=dependency_links
 )

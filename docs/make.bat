@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
-set SPHINXPROJ=coast_core
+set SPHINXPROJ=coast_search
 
 if "%1" == "" goto help
 
