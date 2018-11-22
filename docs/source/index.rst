@@ -1,4 +1,4 @@
-Welcome to the documentation for COAST_CORE!
+Welcome to the documentation for COAST_SEARCH!
 ============================================
 
 Contents:

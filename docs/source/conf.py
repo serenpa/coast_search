@@ -16,28 +16,21 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('..'))
-# sys.path.insert(0, os.path.abspath('../../coast_core'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/analyse_ngrams'))
+
 print(sys.path)
-# sys.path.insert(0, os.path.abspath('../../coast_core/citations'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/clarity_of_writing'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/code_detection'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/events'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/markers'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/named_entities'))
-# sys.path.insert(0, os.path.abspath('../../coast_core/utils'))
+
 
 # -- Project information -----------------------------------------------------
-import coast_core
+import coast_search
 
-project = 'coast_core'
+project = 'coast_search'
 copyright = '2018, Ashley Williams'
 author = 'Ashley Williams'
 
 # The short X.Y version
-version = coast_core.__version__
+version = coast_search.__version__
 # The full version, including alpha/beta/rc tags
-release = coast_core.__version__
+release = coast_search.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -114,7 +107,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'coast_coredoc'
+htmlhelp_basename = 'coast_searchdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -141,7 +134,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'coast_core.tex', 'coast\\_core Documentation',
+    (master_doc, 'coast_search.tex', 'coast\\_search Documentation',
      'Ashley Williams', 'manual'),
 ]
 
@@ -151,7 +144,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'coast_core', 'coast_core Documentation',
+    (master_doc, 'coast_search', 'coast_search Documentation',
      [author], 1)
 ]
 
@@ -162,9 +155,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'coast_core', 'coast_core Documentation',
-     author, 'coast_core', 'One line description of project.',
-     'Miscellaneous'),
+    (master_doc, 'coast_search', 'coast_search Documentation',
+     author, 'coast_search', 'COAST_SEARCH allows you to generate and run queries against the Google Custom Search API.',
+     'Searching'),
 ]
 
 

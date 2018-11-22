@@ -10,8 +10,7 @@ Maintainer
 Contributors
 ------------
 
-* Stefan Hall
-* Yann Le Norment
+* Liz Richardson
 * Adrien Aucher
 
 Want to contribute? See: CONTRIBUTING.rst
