@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-"""Unit test package for coast_core."""
+"""Unit test package for coast_search."""

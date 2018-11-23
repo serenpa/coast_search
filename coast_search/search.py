@@ -252,3 +252,36 @@ def run_daily_search(config_file): #flag goes here):
         "results": results
     }
 
+
+### TODO: Fix...something :)
+def run_daily_search_existing_config(query_dict_list): #flag goes here):
+    """
+        Run a full daily search. This function can be set up as a cronjob
+        (or scheduled task on Windows) to search over consecutive days.
+        Refer to the documentation for usage guidelines and descriptions of
+        how the config file should be structured (http://coast_search.readthedocs.io/).
+        Args:
+            config_file: Path to a JSON file containing all relevant information for
+                         conducting the searches.
+    """
+
+
+    results = []
+
+    for query_object in query_dict_list:
+        results.append(run_query(
+            query_object['query_string'],
+            config['number_of_runs'],
+            config['number_of_results'],
+            query_object['api_key'],
+            query_object['search_engine_id'],
+            query_object['segment_id'],
+            day,
+            config['search_backup_dir']
+        ))
+
+    #TODO: if file flag is called, write to file
+
+    return {
+        "results": results
+    }
