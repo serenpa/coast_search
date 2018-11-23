@@ -21,27 +21,144 @@ class TestQueryGenerator(unittest.TestCase):
             "experience": ['i', 'me', 'our', 'we', 'in my experience'],
             "topic": ['trustworthy', 'software']
         }
+        self.one_dimension_queries = [{'segment_id': 2, 'logic': 'topic', 'query': '("credibility" OR "assessment")'},
+                                {'segment_id': 0, 'logic': 'random + !(topic)',
+                                 'query': '"annexs mug regions" -"credibility" -"assessment" '},
+                                {'segment_id': 1, 'logic': 'seed + !(topic)',
+                                 'query': '"software" -"credibility" -"assessment" '}]
 
+    def test_generate_result_list_one_dimension(self):
+        one_dimension_data = {
+            'topic': {
+            'wordsList': ['credibility', 'assessment'],
+            'pos': '("credibility" OR "assessment")',
+            'neg': '-"credibility" -"assessment" '
+            }
+        }
 
-    def test_generate_result_list(self):
-        # todo
-        print("") #api_details_file
-        # generate_result_list(dimensions_data, dimensions, seed, random)
+        actual_1_dimension = query_generator.generate_result_list(one_dimension_data,
+                                                                  ["topic"],
+                                                                  "software",
+                                                                  "annexs mug regions")
 
+        self.assertEqual(self.one_dimension_queries, actual_1_dimension)
 
+    def test_add_api_config_1D_unique_keys(self):
 
-    def test_generate_query_strings_n_dimensions(self):
-        # todo
-        print("")
-        # generate_query_strings_n_dimensions
+        search_engines = [
+            {
+                "name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            },
+            {
+                "name": "cse-2",
+                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:bbb"
+            },
+            {
+                "name": "cse-3",
+                "api_key": "cccfcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:ccc"
+            }]
+
+        expected = [
+            {
+                'segment_id': 2,
+                 'logic': 'topic',
+                 'query': '("credibility" OR "assessment")',
+                 "se_name": "cse-1",
+                 "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                 "search_engine_id": "82260244545522837893:aaa"
+             },
+            {
+                'segment_id': 0,
+                'logic': 'random + !(topic)',
+                'query': '"annexs mug regions" -"credibility" -"assessment" ',
+                "se_name": "cse-2",
+                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:bbb"
+            },
+            {
+                'segment_id': 1,
+                'logic': 'seed + !(topic)',
+                'query': '"software" -"credibility" -"assessment" ',
+                "se_name": "cse-3",
+                "api_key": "cccfcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:ccc"
+            }
+        ]
+
+        actual = query_generator.add_api_config_to_queries(self.one_dimension_queries, search_engines)
+
+        self.assertEqual(expected, actual)
+
+    def test_add_api_config_1D_one_key(self):
+        search_engines = [
+            {
+                "name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            }]
+
+        expected = [
+            {
+                'segment_id': 2,
+                'logic': 'topic',
+                'query': '("credibility" OR "assessment")',
+                "se_name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            },
+            {
+                'segment_id': 0,
+                'logic': 'random + !(topic)',
+                'query': '"annexs mug regions" -"credibility" -"assessment" ',
+                "se_name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            },
+            {
+                'segment_id': 1,
+                'logic': 'seed + !(topic)',
+                'query': '"software" -"credibility" -"assessment" ',
+                "se_name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            }
+        ]
+
+        actual = query_generator.add_api_config_to_queries(self.one_dimension_queries, search_engines)
+
+        self.assertEqual(expected, actual)
+
+    def test_add_api_config_1D_incorrect_keys(self):
+        search_engines = [
+            {
+                "name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            },
+            {
+                "name": "cse-2",
+                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:bbb"
+            }]
+
+        with self.assertRaises(SystemExit) as cm:
+            query_generator.add_api_config_to_queries(self.one_dimension_queries, search_engines)
+        self.assertEqual(cm.exception.code, "Invalid number of API keys.")
+
 
     def test_check_length(self):
 
-        expect_fail = query_generator.check_length("seed", "random", self.dimensions_dict, 5)
-        self.assertFalse(expect_fail)
+        with self.assertRaises(SystemExit) as cm:
+            query_generator.check_length("seed", "random", self.dimensions_dict, 5)
+        self.assertEqual(cm.exception.code, ('The maximum number of keywords is:', 5, '\nYou have:', 26))
 
-        expect_fail_border = query_generator.check_length("seed", "random", self.dimensions_dict, 25)
-        self.assertFalse(expect_fail_border)
+        with self.assertRaises(SystemExit) as cm:
+            query_generator.check_length("seed", "random", self.dimensions_dict, 25)
+        self.assertEqual(cm.exception.code, ('The maximum number of keywords is:', 25, '\nYou have:', 26))
 
         expect_pass = query_generator.check_length("seed", "random", self.dimensions_dict, 50)
         self.assertTrue(expect_pass)
