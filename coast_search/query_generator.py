@@ -4,10 +4,9 @@
 """
 
 from random_words import RandomWords
-import json
+
 import itertools
 import functools
-import sys
 
 
 def get_random_query(words_to_exclude):
@@ -187,7 +186,7 @@ def add_api_config_to_queries(generated_query_strings, search_engines):
             query_object["api_key"] = se["api_key"]
             query_object["search_engine_id"] = se["search_engine_id"]
     else:
-        sys.exit("Invalid number of API keys.") #Unsure if this is what we want to do?
+        raise Exception("Invalid number of API keys.")
 
     return generated_query_strings
 
@@ -231,7 +230,7 @@ def check_length(seed, random, query_words, key_max):
     - number of words in seed
     - number of words in random phrase
     - number of words in the lists from the query
-    Will cause sys.exit() if there are too many words
+    Will raise exception if there are too many words
 
     Args:
         seed: the seed for segment 1
@@ -250,32 +249,4 @@ def check_length(seed, random, query_words, key_max):
         return True
     else:
         message = "The maximum number of keywords is:", key_max, "\nYou have:", total_words
-        sys.exit(message)  # Unsure if this is what we want to do?
-
-
-def main():
-    """
-        Added for testing
-    """
-    topic_strings = ["credibility", "assessment"]
-    reason_indicators = ["because", "however", "conclude", "for example"]
-    experience_indicators = ["i", "our", "experience", "my"]
-    people_strings = ["Stefan Hall", "Liz Richardson", "Ash Williams"]
-    max_keywords = 32
-
-    three_dimensions = {"topic": topic_strings, "reason": reason_indicators, "experience": experience_indicators}
-    four_dimensions = {"topic": topic_strings, "reason": reason_indicators, "experience": experience_indicators,
-                       "people": people_strings}
-
-    queries_3_dimensions = generate_query_strings_n_dimensions(three_dimensions, "software", max_keywords)
-    queries_4_dimensions = generate_query_strings_n_dimensions(four_dimensions, "software", max_keywords)
-
-    for obj in queries_3_dimensions:
-        print(json.dumps(obj, indent=4))
-
-    for obj in queries_4_dimensions:
-        print(json.dumps(obj, indent=4))
-
-
-if __name__ == '__main__':
-    main()
+        raise Exception(message)
