@@ -19,7 +19,18 @@ from datetime import date
 
 from googleapiclient.discovery import build
 
+LOGGING = False
 
+def initiate_logging(log_file):
+    """
+        Not to be called manually. This function is called by others to
+        initiate the log files if needed.
+        Args:
+            log_file: the path to the log file
+    """
+    if !LOGGING:
+        logging.basicConfig(filename=log_file)
+        LOGGING = True
 
 
 
@@ -59,6 +70,7 @@ def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
                 start=i
             )
 
+            #TODO: make the sleep time configurable (we wait between queries so that google dont think we're a robot)
             sleep(1)
             result = api_call.execute()
 
@@ -74,6 +86,7 @@ def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
             raise Exception(str(e))
 
     return result_list
+
 
 
 def write_results_to_file(day, result, backup_output_dir):
@@ -98,6 +111,7 @@ def write_results_to_file(day, result, backup_output_dir):
     ofile.close()
 
 
+
 def write_to_file(name, result, dir, extension):
         """
             Writes to results to a file
@@ -116,6 +130,7 @@ def write_to_file(name, result, dir, extension):
         ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
         ofile.write(str(result))
         ofile.close()
+
 
 
 def get_object_to_write(result):
@@ -174,8 +189,9 @@ def get_object_to_write(result):
         "results": result_items,
         "links": urls
     }
-    
+
     return object_to_write
+
 
 
 def run_query(query_string, number_of_runs, number_of_results, api_key, search_engine_id, segment_id, day,
@@ -222,8 +238,9 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
 
         extracted_results.append(get_object_to_write(res))
         logging.info("Segment {0} : Run {1} : Written to db.\n".format(segment_id, i + 1))
-    
+
     return extracted_results
+
 
 
 def run_daily_search(config_file, write_to_file_flag):
@@ -239,7 +256,7 @@ def run_daily_search(config_file, write_to_file_flag):
     """
     config = utils.get_json_from_file(config_file)
 
-    logging.basicConfig(filename=config["logging_dir"])
+    initiate_logging(config["logging_dir"])
 
     start_date_parts = config['start_date'].split('-')
     start_date = date(int(start_date_parts[2]), int(start_date_parts[1]), int(start_date_parts[0]))
@@ -274,6 +291,7 @@ def run_daily_search(config_file, write_to_file_flag):
     return results
 
 
+
 ### TODO: update documentation
 def append_daily_search_results(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir): #flag goes here):
     """
@@ -285,6 +303,7 @@ def append_daily_search_results(query_dict_list, number_of_runs, number_of_resul
             config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
     """
+    initiate_logging(config["logging_dir"])
 
     results = []
 
