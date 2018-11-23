@@ -4,7 +4,7 @@
 """
 
 from random_words import RandomWords
-import json
+
 import itertools
 import functools
 
@@ -105,12 +105,14 @@ def generate_result_list(dimensions_data, dimensions, seed, random):
     Args:
         dimensions_data: a list of phrases (e.g. reasoning/experience
                      indicators)
+        dimensions: a list of names of the given dimensions
+        seed: the seed for seg 1
+        random: the random phrase for seg 0
     Returns:
         result_string: a string of all phrases AND'd together ready for a
                        search engine.
     """
-    combinations = functools.reduce(lambda x, y: list(itertools.combinations(dimensions, y)) + x,
-                                    range(len(dimensions) + 1), [])
+    combinations = functools.reduce(lambda x, y: list(itertools.combinations(dimensions, y)) + x, range(len(dimensions) + 1), [])
     result_list = []
     segment_count = 2  # starts at 2, as we always want 0 and 1 to be specific
 
@@ -124,33 +126,69 @@ def generate_result_list(dimensions_data, dimensions, seed, random):
                 query_string = " AND ".join(positives) + " " + "".join(negatives)
                 logic_string = " + ".join(tup) + " + " + "!(" + " + ".join(diff) + ")"
 
-                result_list.append({
-                    "segment_id": segment_count,
-                    "logic": logic_string,
-                    "query": query_string
-                })
+                add_to_result_list(result_list, segment_count, logic_string, query_string)
+
                 segment_count += 1
             else:
-                result_list.append({
-                    "segment_id": 0,
-                    "logic": "random + !(" + " + ".join(diff) + ")",
-                    "query": '"' + random + '"' + "".join(negatives)
-                })
-
-                result_list.append({
-                    "segment_id": 1,
-                    "logic": "seed + !(" + " + ".join(diff) + ")",
-                    "query": '"' + seed + '" ' + "".join(negatives)
-                })
+                add_to_result_list(result_list, 0,
+                                   "random + !(" + " + ".join(diff) + ")",
+                                   '"' + random + '" ' + "".join(negatives))
+                add_to_result_list(result_list, 1,
+                                   "seed + !(" + " + ".join(diff) + ")",
+                                   '"' + seed + '" ' + "".join(negatives))
         else:
-            result_list.append({
-                "segment_id": segment_count,
-                "logic": " + ".join(tup),
-                "query": " AND ".join(positives)
-            })
+            add_to_result_list(result_list, segment_count, " + ".join(tup), " AND ".join(positives))
             segment_count += 1
 
     return result_list
+
+
+def add_to_result_list(result_list, seg_id, logic, query):
+    result_list.append({
+        "segment_id": seg_id,
+        "logic": logic,
+        "query": query
+    })
+
+    return result_list
+
+
+def add_api_config_to_queries(generated_query_strings, search_engines):
+    """
+        Merges the two parameters and returns a list of dicts that include the
+        api config.
+
+        If only 1 API key is provided, it is assumed this is valid for many searches and is used for all queries
+        If more than 1 is provided, then the number of keys provided needs to match the number of queries
+
+        Args:
+            generated_query_strings: The output from the generate_query_strings
+                                     function.
+            search_engines: The search engines list that is found in the
+                            api_config file. See the documentation for usage
+                            guidelines (http://coast_search.readthedocs.io/).
+        Returns:
+            result_list: Updated list of query data now including search engine/api info
+    """
+
+    if len(search_engines) == 1:
+        se = search_engines[0]
+        for query_object in generated_query_strings:
+            query_object["se_name"] = se["name"]
+            query_object["api_key"] = se["api_key"]
+            query_object["search_engine_id"] = se["search_engine_id"]
+
+    elif len(search_engines) == len(generated_query_strings):
+        for i in range(0, len(search_engines)):
+            query_object = generated_query_strings[i]
+            se = search_engines[i]
+            query_object["se_name"] = se["name"]
+            query_object["api_key"] = se["api_key"]
+            query_object["search_engine_id"] = se["search_engine_id"]
+    else:
+        raise Exception("Invalid number of API keys.")
+
+    return generated_query_strings
 
 
 def generate_query_strings_n_dimensions(dimensions_dict, seed, key_max):
@@ -183,8 +221,6 @@ def generate_query_strings_n_dimensions(dimensions_dict, seed, key_max):
     if check_length(seed, random, dimensions_dict.values(), key_max):
         result_data = generate_result_list(dimensions_data, dimensions, seed, random)
         return result_data
-    else:
-        return {}
 
 
 def check_length(seed, random, query_words, key_max):
@@ -194,6 +230,7 @@ def check_length(seed, random, query_words, key_max):
     - number of words in seed
     - number of words in random phrase
     - number of words in the lists from the query
+    Will raise exception if there are too many words
 
     Args:
         seed: the seed for segment 1
@@ -211,33 +248,5 @@ def check_length(seed, random, query_words, key_max):
     if total_words <= key_max:
         return True
     else:
-        print("The maxiumum number of keywords is:", key_max, "\nYou have:", total_words)
-        return False
-
-
-def main():
-    """
-        Added for testing
-    """
-    topic_strings = ["credibility", "assessment"]
-    reason_indicators = ["because", "however", "conclude", "for example"]
-    experience_indicators = ["i", "our", "experience", "my"]
-    people_strings = ["Stefan Hall", "Liz Richardson", "Ash Williams"]
-    max_keywords = 32
-
-    three_dimensions = {"topic": topic_strings, "reason": reason_indicators, "experience": experience_indicators}
-    four_dimensions = {"topic": topic_strings, "reason": reason_indicators, "experience": experience_indicators,
-                       "people": people_strings}
-
-    queries_3_dimensions = generate_query_strings_n_dimensions(three_dimensions, "software", max_keywords)
-    queries_4_dimensions = generate_query_strings_n_dimensions(four_dimensions, "software", max_keywords)
-
-    for obj in queries_3_dimensions:
-        print(json.dumps(obj, indent=4))
-
-    for obj in queries_4_dimensions:
-        print(json.dumps(obj, indent=4))
-
-
-if __name__ == '__main__':
-    main()
+        message = "The maximum number of keywords is:", key_max, "\nYou have:", total_words
+        raise Exception(message)

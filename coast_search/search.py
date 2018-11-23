@@ -11,6 +11,7 @@ import sys
 import os
 
 from coast_search import utils
+from coast_search import query_generator
 
 from time import time, sleep
 from datetime import date
@@ -26,269 +27,6 @@ def replace_last(source_string, replace_what, replace_with):
     """
     head, _sep, tail = source_string.rpartition(replace_what)
     return head + replace_with + tail
-
-
-def get_random_query(topic_strings, reason_indicators, experience_indicators):
-    """
-    Segment 1 uses a random seed query. This function creates that seed
-    query using the random_words library and returns it.
-    Notes:
-        1. The random query returned wont contain any word that exists in
-        any topic string or indicator list.
-        2. The random query string will always be three words long.
-    Args:
-        topic_strings: The topic strings being used for the search.
-        reasoning_indicators: The reasoning indicators being used for the
-        search.
-        experience_indicators: The experience indicators being used for the
-        search.
-    Returns:
-        qs: The generated random query.
-    """
-    topic_list = []
-    for topic_string in topic_strings:
-        topic_words = topic_string.split()
-        for word in topic_words:
-            topic_list.append(word)
-
-    stop_list = topic_list + reason_indicators, experience_indicators
-    # print(stop_list)
-
-    rw = RandomWords()
-
-    flag = False
-
-    while (flag == False):
-        words = rw.random_words(count=3)
-
-        flag2 = True
-        for word in words:
-            if word in stop_list:
-                flag2 = False
-
-        if flag2 == True:
-            flag = True
-
-        # print(words)
-
-    qs = '"'
-    for word in words:
-        qs += word + ' '
-        qs = replace_last(qs, ' ', '"')
-
-    # print("Random query: " + qs)
-    return qs
-
-
-def pos_query_segment(phrase_list):
-    """
-        Given a list of phrases, returns a string of all the phrases AND'd
-        together.
-        e.g. ("but" AND "because" AND "however")
-        Args:
-            phrase_list: a list of phrases (e.g. reasoning/experience
-                         indicators)
-        Returns:
-            result_string: a string of all phrases AND'd together ready for a
-                           search engine.
-    """
-    result_string = "("
-
-    for phrase in phrase_list:
-        result_string += '"' + phrase + '" OR '
-
-    # Now remove the last AND
-    result_string = result_string[:-4]
-    result_string += ")"
-
-    return result_string
-
-
-def neg_query_segment(phrase_list):
-    """
-        Given a list of phrases, returns a string of all the phrases negated.
-        e.g. -"but" -"because" -"however"
-        Args:
-            phrase_list: a list of phrases (e.g. reasoning/experience
-                         indicators)
-        Returns:
-            result_string: a string of all phrases AND'd together ready for a
-                           search engine.
-    """
-    result_string = ""
-
-    for phrase in phrase_list:
-        result_string += '-"' + phrase + '" '
-
-    return result_string
-
-
-def generate_query_strings(topic_strings, reason_indicators, experience_indicators, seg_9_seed="software engineering"):
-    """
-        Generates the query string for each segment and returns as a list of
-        dict objects in the following format:
-        [{
-            segment_id: 6,
-            logic: "T+R+E",
-            query: query string here
-        }]
-        Notes:
-            1. Topic phrases stay as phrases, multple topic words are AND'd
-               together.
-            2. The seg_9_seed parameter is optional, the default will be
-               "software engineering"
-        Segments:
-            1. !(T + E + R)
-            2. R + !(T + E)
-            3. (R + E) + !T
-            4. E + !(T + R)
-            5. (T + R) + !E
-            6. T + R + E
-            7. (T + E) + !R
-            8. T + !(R + E)
-            9. Inner universe !(T + E + R) with "software engineering" as seed
-        Args:
-            topic_strings: The topic strings being used for the search.
-            reasoning_indicators: The reasoning indicators being used for the
-                                  search.
-            experience_indicators: The experience indicators being used for the
-                                   search.
-            seg_9_seed: The seed word for segment 9 queries. The default is
-                        "software engineering"
-        Returns:
-            result_list: a list of objects, each stating the segment_id, search
-                         logic, and query string.
-    """
-    result_list = []
-
-    pos_topic = pos_query_segment(topic_strings)
-    neg_topic = neg_query_segment(topic_strings)
-
-    pos_reasoning = pos_query_segment(reason_indicators)
-    neg_reasoning = neg_query_segment(reason_indicators)
-
-    pos_experience = pos_query_segment(experience_indicators)
-    neg_experience = neg_query_segment(experience_indicators)
-
-    # Segment 1. !(T + E + R)
-    random_query = get_random_query(topic_strings, reason_indicators, experience_indicators)
-
-    segment_1_query = random_query + " " + neg_topic + " " + neg_reasoning + " " + neg_experience
-
-    result_list.append({
-        "segment_id": 1,
-        "logic": "random + !(T+R+E)",
-        "query": segment_1_query
-    })
-
-    # Segment 2. R + !(T + E)
-    segment_2_query = pos_reasoning + " " + neg_topic + " " + neg_experience
-
-    result_list.append({
-        "segment_id": 2,
-        "logic": "R + !(T + E)",
-        "query": segment_2_query
-    })
-
-    # Segment 3. (R + E) + !T
-    segment_3_query = pos_reasoning + " AND " + pos_experience + " " + neg_topic
-
-    result_list.append({
-        "segment_id": 3,
-        "logic": "(R + E) + !T",
-        "query": segment_3_query
-    })
-
-    # Segment 4. E + !(T + R)
-    segment_4_query = pos_experience + " " + neg_topic + " " + neg_reasoning
-
-    result_list.append({
-        "segment_id": 4,
-        "logic": "E + !(T + R)",
-        "query": segment_4_query
-    })
-
-    # Segment 5. (T + R) + !E
-    segment_5_query = pos_topic + " AND " + pos_reasoning + " " + neg_experience
-
-    result_list.append({
-        "segment_id": 5,
-        "logic": "(T + R) + !E",
-        "query": segment_5_query
-    })
-
-    # Segment 6. T + R + E
-    segment_6_query = pos_topic + " AND " + pos_reasoning + " AND " + pos_experience
-
-    result_list.append({
-        "segment_id": 6,
-        "logic": "T + R + E",
-        "query": segment_6_query
-    })
-
-    # Segment 7. (T + E) + !R
-    segment_7_query = pos_topic + " AND " + pos_experience + " " + neg_reasoning
-
-    result_list.append({
-        "segment_id": 7,
-        "logic": "(T + E) + !R",
-        "query": segment_7_query
-    })
-
-    # Semgnet 8. T + !(R + E)
-    segment_8_query = pos_topic + " " + neg_reasoning + " " + neg_experience
-
-    result_list.append({
-        "segment_id": 8,
-        "logic": "T + !(R + E)",
-        "query": segment_8_query
-    })
-
-    # 9. Inner universe !(T + E + R) with "software engineering" as seed
-    segment_9_query = '"' + seg_9_seed + '" ' + neg_topic + " " + neg_reasoning + " " + neg_experience
-
-    result_list.append({
-        "segment_id": 9,
-        "logic": "seed + !(T + E + R)",
-        "query": segment_9_query
-    })
-
-    return result_list
-
-
-def add_api_config_to_queries(generated_query_strings, search_engines):
-    """
-        Merges the two parameters and returns a list of dicts that include the
-        api config.
-        Args:
-            generated_query_strings: The output from the generate_query_strings
-                                     function.
-            search_engines: The search engines list that is found in the
-                            api_config file. See the documentation for usage
-                            guidelines (http://coast_search.readthedocs.io/).
-        Returns:
-            result_list: A modified version of the output from the
-                         generate_query_strings function. The list will now
-                         also contain the required api config.
-    """
-    result_list = []
-
-    for query_object in generated_query_strings:
-        segment_id = query_object["segment_id"]
-        logic = query_object["logic"]
-        query_string = query_object["query"]
-
-        for se in search_engines:
-            if se["segment_id"] == segment_id:
-                result_list.append({
-                    "segment_id": segment_id,
-                    "logic": logic,
-                    "query_string": query_string,
-                    "se_name": se["name"],
-                    "api_key": se["api_key"],
-                    "search_engine_id": se["search_engine_id"]
-                })
-    return result_list
 
 
 def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
@@ -505,17 +243,15 @@ def run_daily_search(config_file):
     day = (todays_date - start_date).days + 1
 
     # Get the queries and indicators
-    topic_indicators = utils.get_from_file(config['topic_file'])
-    reasoning_indicators = utils.get_from_file(config['reasoning_file'])
-    experience_indicators = utils.get_from_file(config['experience_file'])
+    dimensions_dict = utils.get_from_file_list(config['dimensions'])
 
     # Now generate query string for each segment
-    generated_query_strings = generate_query_strings(topic_indicators, reasoning_indicators, experience_indicators)
+    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict)
 
     # Get API config and place it into list of dictionaries
     api_config = utils.get_json_from_file(config['api_details_file'])
     search_engines = api_config['search_engines']
-    query_dict_list = add_api_config_to_queries(generated_query_strings, search_engines)
+    query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
 
     db = utils.get_db(config['db_url'], config['db_client'])
 
