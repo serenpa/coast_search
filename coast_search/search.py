@@ -206,6 +206,8 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
     """
     results = []
     for i in range(0, number_of_runs):
+        #todo change to logger
+        print(query_string)
         sys.stdout.write("Segment {0} : Running {1} out of {2} runs.\n".format(segment_id, i + 1, number_of_runs))
         results += queryAPI(query_string, number_of_results, api_key, search_engine_id, segment_id)
 
@@ -250,7 +252,7 @@ def run_daily_search(config_file, write_to_file_flag):
     dimensions_dict = utils.get_from_file_list(config['dimensions'])
 
     # Now generate query string for each segment
-    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict)
+    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict, "software", 32)
 
     # Get API config and place it into list of dictionaries
     api_config = utils.get_json_from_file(config['api_details_file'])
@@ -288,7 +290,7 @@ def append_daily_search_results(query_dict_list, number_of_runs, number_of_resul
 
     for query_object in query_dict_list:
         results.append(run_query(
-            query_object['query_string'],
+            query_object['query'],
             number_of_runs,
             number_of_results,
             query_object['api_key'],
