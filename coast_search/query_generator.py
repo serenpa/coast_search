@@ -106,6 +106,9 @@ def generate_result_list(dimensions_data, dimensions, seed, random):
     Args:
         dimensions_data: a list of phrases (e.g. reasoning/experience
                      indicators)
+        dimensions: a list of names of the given dimensions
+        seed: the seed for seg 1
+        random: the random phrase for seg 0
     Returns:
         result_string: a string of all phrases AND'd together ready for a
                        search engine.
