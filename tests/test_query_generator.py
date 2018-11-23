@@ -10,7 +10,6 @@ import os
 import unittest
 
 from coast_search import query_generator
-from coast_search import utils
 
 
 class TestQueryGenerator(unittest.TestCase):
@@ -21,11 +20,29 @@ class TestQueryGenerator(unittest.TestCase):
             "experience": ['i', 'me', 'our', 'we', 'in my experience'],
             "topic": ['trustworthy', 'software']
         }
-        self.one_dimension_queries = [{'segment_id': 2, 'logic': 'topic', 'query': '("credibility" OR "assessment")'},
-                                {'segment_id': 0, 'logic': 'random + !(topic)',
-                                 'query': '"annexs mug regions" -"credibility" -"assessment" '},
-                                {'segment_id': 1, 'logic': 'seed + !(topic)',
-                                 'query': '"software" -"credibility" -"assessment" '}]
+
+        self.one_dimension_queries = [
+            {'segment_id': 2, 'logic': 'topic', 'query': '("credibility" OR "assessment")'},
+            {'segment_id': 0, 'logic': 'random + !(topic)', 'query': '"annexs mug regions" -"credibility" -"assessment" '},
+            {'segment_id': 1, 'logic': 'seed + !(topic)', 'query': '"software" -"credibility" -"assessment" '}
+        ]
+
+        self.three_search_engines = [
+            {
+                "name": "cse-1",
+                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:aaa"
+            },
+            {
+                "name": "cse-2",
+                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:bbb"
+            },
+            {
+                "name": "cse-3",
+                "api_key": "cccfcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
+                "search_engine_id": "82260244545522837893:ccc"
+            }]
 
     def test_generate_result_list_one_dimension(self):
         one_dimension_data = {
@@ -45,22 +62,7 @@ class TestQueryGenerator(unittest.TestCase):
 
     def test_add_api_config_1D_unique_keys(self):
 
-        search_engines = [
-            {
-                "name": "cse-1",
-                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:aaa"
-            },
-            {
-                "name": "cse-2",
-                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:bbb"
-            },
-            {
-                "name": "cse-3",
-                "api_key": "cccfcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:ccc"
-            }]
+        search_engines = self.three_search_engines
 
         expected = [
             {
@@ -94,12 +96,8 @@ class TestQueryGenerator(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_add_api_config_1D_one_key(self):
-        search_engines = [
-            {
-                "name": "cse-1",
-                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:aaa"
-            }]
+
+        search_engines = self.three_search_engines[0:1]
 
         expected = [
             {
@@ -133,17 +131,7 @@ class TestQueryGenerator(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_add_api_config_1D_incorrect_keys(self):
-        search_engines = [
-            {
-                "name": "cse-1",
-                "api_key": "aaa2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:aaa"
-            },
-            {
-                "name": "cse-2",
-                "api_key": "bbb2fcb8f-9c52-44b9-8a71-6d7dcdbfdbd8",
-                "search_engine_id": "82260244545522837893:bbb"
-            }]
+        search_engines = self.three_search_engines[0:2]
 
         with self.assertRaises(SystemExit) as cm:
             query_generator.add_api_config_to_queries(self.one_dimension_queries, search_engines)
