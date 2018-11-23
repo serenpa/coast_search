@@ -16,17 +16,10 @@ from coast_search import query_generator
 from time import time, sleep
 from datetime import date
 
-from random_words import RandomWords
 from googleapiclient.discovery import build
 
 
-def replace_last(source_string, replace_what, replace_with):
-    """
-        DO NOT USE: This is a helper function, used by the get_random_query
-        fuction.
-    """
-    head, _sep, tail = source_string.rpartition(replace_what)
-    return head + replace_with + tail
+
 
 
 def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
@@ -77,7 +70,7 @@ def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
                 "response": result
             })
         except Exception as e:
-            sys.stdout.write(str(e))
+            raise Exception(str(e))
 
     return result_list
 
@@ -159,11 +152,11 @@ def write_results_to_database(db, day, result):
         "results": result_items,
         "links": urls
     }
-    # Insert into db
-    db["day_" + str(day)].insert_one(object_to_write)
+    
+    return object_to_write
 
 
-def run_query(db, query_string, number_of_runs, number_of_results, api_key, search_engine_id, segment_id, day,
+def run_query(query_string, number_of_runs, number_of_results, api_key, search_engine_id, segment_id, day,
               backup_dir):
     """
         Runs the query against the Google Custom Search API.
@@ -173,7 +166,7 @@ def run_query(db, query_string, number_of_runs, number_of_results, api_key, sear
             db: The pymongo db object.
             query_string: The query string to run.
             number_of_runs: The number of runs you wish to be repeat for each
-                            day. Note, the free version of the Custom Search API
+                            day. Notfig = utils.get_json_from_file(config['api_details_file']e, the free version of the Custom Search API
                             is limited to 100 searches per day. Each search
                             returns 10 results.
             number_of_results: The number of results you wish to be returned.
@@ -196,41 +189,27 @@ def run_query(db, query_string, number_of_runs, number_of_results, api_key, sear
 
     # print("results:-", len(results))
 
+    extracted_results = []
+
     for res in results:
         write_results_to_file(day, res, backup_dir)  # as a backup incase something goes wrong
         sys.stdout.write("Segment {0} : Run {1} : Written to file.\n".format(segment_id, i + 1))
 
-        write_results_to_database(db, day, res)
+        extracted_results.append(write_results_to_database(db, day, res))
         sys.stdout.write("Segment {0} : Run {1} : Written to db.\n".format(segment_id, i + 1))
+    
+    return extracted_results
 
 
-def run_db_check(db, day, number_of_results, number_of_runs):
-    """
-        Logs whether the number of expected results matches the actual results.
-        Refer to the documentation for usage guidelines and descriptions of
-        what each parameter means (http://coast_search.readthedocs.io/).
-        Args:
-            db: The pymongo db object.
-            day: The day of the search period that the result has originated
-                 from.
-    """
-    db_count = db["day_" + str(day)].count()
-    expected = int((number_of_results / 10) * number_of_runs * 9)
 
-    if db_count == expected:
-        sys.stdout.write("Success: expected {0} result(s), db has {1} result(s)".format(expected, db_count))
-    else:
-        sys.stdout.write("Failure: expected {0} result(s), db has {1} result(s)".format(expected, db_count))
-
-
-def run_daily_search(config_file):
+def run_daily_search(config_file): #flag goes here):
     """
         Run a full daily search. This function can be set up as a cronjob
         (or scheduled task on Windows) to search over consecutive days.
         Refer to the documentation for usage guidelines and descriptions of
         how the config file should be structured (http://coast_search.readthedocs.io/).
         Args:
-            config_file: A JSON file containing all relevant information for
+            config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
     """
     config = utils.get_json_from_file(config_file)
@@ -253,11 +232,10 @@ def run_daily_search(config_file):
     search_engines = api_config['search_engines']
     query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
 
-    db = utils.get_db(config['db_url'], config['db_client'])
+    results = []
 
     for query_object in query_dict_list:
-        run_query(
-            db,
+        results.append(run_query(
             query_object['query_string'],
             config['number_of_runs'],
             config['number_of_results'],
@@ -266,7 +244,11 @@ def run_daily_search(config_file):
             query_object['segment_id'],
             day,
             config['search_backup_dir']
-        )
+        ))
 
-    print("\nLaunching db check...\n")
-    run_db_check(db, day, config['number_of_results'], config['number_of_runs'])
+    #TODO: if file flag is called, write to file
+
+    return {
+        "results": results
+    }
+
