@@ -133,20 +133,13 @@ class TestQueryGenerator(unittest.TestCase):
     def test_add_api_config_1D_incorrect_keys(self):
         search_engines = self.three_search_engines[0:2]
 
-        with self.assertRaises(SystemExit) as cm:
-            query_generator.add_api_config_to_queries(self.one_dimension_queries, search_engines)
-        self.assertEqual(cm.exception.code, "Invalid number of API keys.")
-
+        self.assertRaises(Exception, query_generator.add_api_config_to_queries, self.one_dimension_queries, search_engines)
 
     def test_check_length(self):
 
-        with self.assertRaises(SystemExit) as cm:
-            query_generator.check_length("seed", "random", self.dimensions_dict, 5)
-        self.assertEqual(cm.exception.code, ('The maximum number of keywords is:', 5, '\nYou have:', 26))
+        self.assertRaises(Exception, query_generator.check_length,"seed", "random", self.dimensions_dict, 5)
 
-        with self.assertRaises(SystemExit) as cm:
-            query_generator.check_length("seed", "random", self.dimensions_dict, 25)
-        self.assertEqual(cm.exception.code, ('The maximum number of keywords is:', 25, '\nYou have:', 26))
+        self.assertRaises(Exception, query_generator.check_length, "seed", "random", self.dimensions_dict, 25)
 
         expect_pass = query_generator.check_length("seed", "random", self.dimensions_dict, 50)
         self.assertTrue(expect_pass)
