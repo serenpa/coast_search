@@ -1,5 +1,15 @@
 {
-    "dimensions": ["./search_dimensions/topic.txt", "./search_dimensions/reasoning.txt","./search_dimensions/experience.txt"],
-    "max_keywords": 32,
-    "api_details_file": "./test_api_config.json"
+  "dimensions": ["./search_dimensions/topic.txt", "./search_dimensions/reasoning.txt","./search_dimensions/experience.txt"],
+  "max_keywords": 32,
+  "api_details_file": "./test_api_config.json",
+  "number_of_runs": 1,
+  "number_of_results": 1,
+  "search_backup_dir": '',
+  "results_output_dir": '',
+  "logging_dir": ""
+
+
+
+
+
 }

@@ -9,6 +9,7 @@
 """
 import sys
 import os
+import logging
 
 from coast_search import utils
 from coast_search import query_generator
@@ -86,6 +87,7 @@ def write_results_to_file(day, result, backup_output_dir):
             backup_output_dir: A directory that can be used for storing results
                                as files.
     """
+    #todo get rid of this
     dir_path = backup_output_dir + "day_" + str(day) + "/"
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
@@ -96,7 +98,27 @@ def write_results_to_file(day, result, backup_output_dir):
     ofile.close()
 
 
-def write_results_to_database(db, day, result):
+def write_to_file(name, result, dir, extension):
+        """
+            Writes to results to a file
+            Args:
+                day: The day of the search period that the result has originated
+                     from.
+                result: The output from running the query.
+                backup_output_dir: A directory that can be used for storing results
+                                   as files.
+        """
+        dir_path = dir + name + "/"
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+
+        timestamp = time()
+        ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
+        ofile.write(str(result))
+        ofile.close()
+
+
+def get_object_to_write(result):
     """
         Writes the results to the db, for later analysis.
         Args:
@@ -192,17 +214,17 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
     extracted_results = []
 
     for res in results:
+        #todo update to use new write to file method
         write_results_to_file(day, res, backup_dir)  # as a backup incase something goes wrong
-        sys.stdout.write("Segment {0} : Run {1} : Written to file.\n".format(segment_id, i + 1))
+        logging.info("Segment {0} : Run {1} : Written to file.\n".format(segment_id, i + 1))
 
-        extracted_results.append(write_results_to_database(db, day, res))
-        sys.stdout.write("Segment {0} : Run {1} : Written to db.\n".format(segment_id, i + 1))
+        extracted_results.append(get_object_to_write(res))
+        logging.info("Segment {0} : Run {1} : Written to db.\n".format(segment_id, i + 1))
     
     return extracted_results
 
 
-
-def run_daily_search(config_file): #flag goes here):
+def run_daily_search(config_file, write_to_file_flag):
     """
         Run a full daily search. This function can be set up as a cronjob
         (or scheduled task on Windows) to search over consecutive days.
@@ -211,8 +233,11 @@ def run_daily_search(config_file): #flag goes here):
         Args:
             config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
+            write_to_file_flag: boolean flag for writing to file
     """
     config = utils.get_json_from_file(config_file)
+
+    logging.basicConfig(filename=config["logging_dir"])
 
     start_date_parts = config['start_date'].split('-')
     start_date = date(int(start_date_parts[2]), int(start_date_parts[1]), int(start_date_parts[0]))
@@ -232,29 +257,23 @@ def run_daily_search(config_file): #flag goes here):
     search_engines = api_config['search_engines']
     query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
 
-    results = []
+    results = append_daily_search_results(
+        query_dict_list,
+        config['number_of_runs'],
+        config['number_of_results'],
+        day,
+        config['search_backup_dir'],
+    )
 
-    for query_object in query_dict_list:
-        results.append(run_query(
-            query_object['query_string'],
-            config['number_of_runs'],
-            config['number_of_results'],
-            query_object['api_key'],
-            query_object['search_engine_id'],
-            query_object['segment_id'],
-            day,
-            config['search_backup_dir']
-        ))
+    if write_to_file_flag:
+        name = "results_day_" + str(day)
+        write_to_file(name, results, config['results_output_dir'], ".json")
 
-    #TODO: if file flag is called, write to file
-
-    return {
-        "results": results
-    }
+    return results
 
 
-### TODO: Fix...something :)
-def run_daily_search_existing_config(query_dict_list): #flag goes here):
+### TODO: update documentation
+def append_daily_search_results(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir): #flag goes here):
     """
         Run a full daily search. This function can be set up as a cronjob
         (or scheduled task on Windows) to search over consecutive days.
@@ -265,19 +284,18 @@ def run_daily_search_existing_config(query_dict_list): #flag goes here):
                          conducting the searches.
     """
 
-
     results = []
 
     for query_object in query_dict_list:
         results.append(run_query(
             query_object['query_string'],
-            config['number_of_runs'],
-            config['number_of_results'],
+            number_of_runs,
+            number_of_results,
             query_object['api_key'],
             query_object['search_engine_id'],
             query_object['segment_id'],
             day,
-            config['search_backup_dir']
+            search_backup_dir
         ))
 
     #TODO: if file flag is called, write to file
