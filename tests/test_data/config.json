@@ -1,5 +1,5 @@
 {
-  "dimensions": ["/Users/liz/Local Documents/Work/coast_search/tests/test_data/search_dimensions/topic.txt"],
+  "dimensions": ["/Users/liz/Local Documents/Work/coast_search/tests/test_data/search_dimensions/topic.txt", "/Users/liz/Local Documents/Work/coast_search/tests/test_data/search_dimensions/reasoning.txt","/Users/liz/Local Documents/Work/coast_search/tests/test_data/search_dimensions/experience.txt"],
   "max_keywords": 32,
   "api_details_file": "/Users/liz/Local Documents/Work/coast_search/tests/test_data/api_config.json",
   "number_of_runs": 1,
@@ -7,6 +7,6 @@
   "search_backup_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup",
   "results_output_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup",
   "logging_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup/log.txt",
-  "start_date": "23-11-2018"
+  "start_date": "28-11-2018"
 
 }

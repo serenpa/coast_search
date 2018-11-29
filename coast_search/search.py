@@ -19,18 +19,7 @@ from datetime import date
 
 from googleapiclient.discovery import build
 
-LOGGING = False
 
-def initiate_logging(log_file):
-    """
-        Not to be called manually. This function is called by others to
-        initiate the log files if needed.
-        Args:
-            log_file: the path to the log file
-    """
-    if !LOGGING:
-        logging.basicConfig(filename=log_file)
-        LOGGING = True
 
 
 
@@ -88,7 +77,6 @@ def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
     return result_list
 
 
-
 def write_results_to_file(day, result, backup_output_dir):
     """
         Writes the results to a txt file, just incase something goes wrong with
@@ -111,7 +99,6 @@ def write_results_to_file(day, result, backup_output_dir):
     ofile.close()
 
 
-
 def write_to_file(name, result, dir, extension):
         """
             Writes to results to a file
@@ -130,7 +117,6 @@ def write_to_file(name, result, dir, extension):
         ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
         ofile.write(str(result))
         ofile.close()
-
 
 
 def get_object_to_write(result):
@@ -193,7 +179,6 @@ def get_object_to_write(result):
     return object_to_write
 
 
-
 def run_query(query_string, number_of_runs, number_of_results, api_key, search_engine_id, segment_id, day,
               backup_dir):
     """
@@ -242,7 +227,6 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
     return extracted_results
 
 
-
 def run_daily_search(config_file, write_to_file_flag):
     """
         Run a full daily search. This function can be set up as a cronjob
@@ -256,7 +240,7 @@ def run_daily_search(config_file, write_to_file_flag):
     """
     config = utils.get_json_from_file(config_file)
 
-    initiate_logging(config["logging_dir"])
+    logging.basicConfig(filename=config["logging_dir"])
 
     start_date_parts = config['start_date'].split('-')
     start_date = date(int(start_date_parts[2]), int(start_date_parts[1]), int(start_date_parts[0]))
@@ -274,8 +258,16 @@ def run_daily_search(config_file, write_to_file_flag):
     # Get API config and place it into list of dictionaries
     api_config = utils.get_json_from_file(config['api_details_file'])
     search_engines = api_config['search_engines']
+    # yikes_generated_from_old = [{'segment_id': 1, 'logic': 'random + !(T+R+E)', 'query': '"coughs abrasive abettor" -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '},
+    #                             {'segment_id': 2, 'logic': 'R + !(T + E)', 'query': '("because" OR "however" OR "conclude" OR "but") -"credibility" -"assessment"  -"i" -"our" -"experience" -"my" '},
+    #                             {'segment_id': 3, 'logic': '(R + E) + !T', 'query': '("because" OR "however" OR "conclude" OR "but") AND ("i" OR "our" OR "experience" OR "my") -"credibility" -"assessment" '},
+    #                             {'segment_id': 4, 'logic': 'E + !(T + R)', 'query': '("i" OR "our" OR "experience" OR "my") -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but" '},
+    #                             {'segment_id': 5, 'logic': '(T + R) + !E', 'query': '("credibility" OR "assessment") AND ("because" OR "however" OR "conclude" OR "but") -"i" -"our" -"experience" -"my" '},
+    #                             {'segment_id': 7, 'logic': '(T + E) + !R', 'query': '("credibility" OR "assessment") AND ("i" OR "our" OR "experience" OR "my") -"because" -"however" -"conclude" -"but" '},
+    #                             {'segment_id': 8, 'logic': 'T + !(R + E)', 'query': '("credibility" OR "assessment") -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '},
+    #                             {'segment_id': 9, 'logic': 'seed + !(T + E + R)', 'query': '"software" -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '}]
     query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
-
+    #query_dict_list = query_generator.add_api_config_to_queries(yikes_generated_from_old, search_engines)
     results = append_daily_search_results(
         query_dict_list,
         config['number_of_runs'],
@@ -285,11 +277,10 @@ def run_daily_search(config_file, write_to_file_flag):
     )
 
     if write_to_file_flag:
-        name = "results_day_" + str(day)
+        name = "_results_day_" + str(day)
         write_to_file(name, results, config['results_output_dir'], ".json")
 
     return results
-
 
 
 ### TODO: update documentation
@@ -303,7 +294,6 @@ def append_daily_search_results(query_dict_list, number_of_runs, number_of_resul
             config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
     """
-    initiate_logging(config["logging_dir"])
 
     results = []
 
@@ -318,8 +308,6 @@ def append_daily_search_results(query_dict_list, number_of_runs, number_of_resul
             day,
             search_backup_dir
         ))
-
-    #TODO: if file flag is called, write to file
 
     return {
         "results": results
