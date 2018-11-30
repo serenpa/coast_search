@@ -191,7 +191,7 @@ def add_api_config_to_queries(generated_query_strings, search_engines):
     return generated_query_strings
 
 
-def generate_query_strings_n_dimensions(dimensions_dict, seed, key_max):
+def generate_query_strings_n_dimensions(dimensions_dict, seed="software", key_max=32):
     """
    Given dimensions and associated words, the seg1 seed and the max length of query,
    sets up and generates the query strings dynamically, depending on the number of dimensions.

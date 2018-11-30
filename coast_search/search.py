@@ -242,12 +242,7 @@ def run_daily_search(config_file, write_to_file_flag):
 
     logging.basicConfig(filename=config["logging_dir"])
 
-    start_date_parts = config['start_date'].split('-')
-    start_date = date(int(start_date_parts[2]), int(start_date_parts[1]), int(start_date_parts[0]))
-
-    # Get the day - starting from one
-    todays_date = date.today()
-    day = (todays_date - start_date).days + 1
+    day = utils.number_of_days_past_start_date(config)
 
     # Get the queries and indicators
     dimensions_dict = utils.get_from_file_list(config['dimensions'])
