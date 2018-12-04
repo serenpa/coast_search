@@ -10,6 +10,7 @@
 import sys
 import os
 import logging
+import json
 
 from coast_search import utils
 from coast_search import query_generator
@@ -119,6 +120,20 @@ def write_to_file(name, result, dir, extension):
         ofile.close()
 
 
+def write_to_json(name, result, dir, extension):
+
+        dir_path = dir + name + "/"
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+
+        timestamp = time()
+        ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
+
+        json.dump(result, ofile)
+
+        ofile.close()
+
+
 def get_object_to_write(result):
     """
         Writes the results to the db, for later analysis.
@@ -212,8 +227,6 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
         sys.stdout.write("Segment {0} : Running {1} out of {2} runs.\n".format(segment_id, i + 1, number_of_runs))
         results += queryAPI(query_string, number_of_results, api_key, search_engine_id, segment_id)
 
-    # print("results:-", len(results))
-
     extracted_results = []
 
     for res in results:
@@ -258,16 +271,9 @@ def run_daily_search(config_file, write_to_file_flag):
     # Get API config and place it into list of dictionaries
     api_config = utils.get_json_from_file(config['api_details_file'])
     search_engines = api_config['search_engines']
-    # yikes_generated_from_old = [{'segment_id': 1, 'logic': 'random + !(T+R+E)', 'query': '"coughs abrasive abettor" -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '},
-    #                             {'segment_id': 2, 'logic': 'R + !(T + E)', 'query': '("because" OR "however" OR "conclude" OR "but") -"credibility" -"assessment"  -"i" -"our" -"experience" -"my" '},
-    #                             {'segment_id': 3, 'logic': '(R + E) + !T', 'query': '("because" OR "however" OR "conclude" OR "but") AND ("i" OR "our" OR "experience" OR "my") -"credibility" -"assessment" '},
-    #                             {'segment_id': 4, 'logic': 'E + !(T + R)', 'query': '("i" OR "our" OR "experience" OR "my") -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but" '},
-    #                             {'segment_id': 5, 'logic': '(T + R) + !E', 'query': '("credibility" OR "assessment") AND ("because" OR "however" OR "conclude" OR "but") -"i" -"our" -"experience" -"my" '},
-    #                             {'segment_id': 7, 'logic': '(T + E) + !R', 'query': '("credibility" OR "assessment") AND ("i" OR "our" OR "experience" OR "my") -"because" -"however" -"conclude" -"but" '},
-    #                             {'segment_id': 8, 'logic': 'T + !(R + E)', 'query': '("credibility" OR "assessment") -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '},
-    #                             {'segment_id': 9, 'logic': 'seed + !(T + E + R)', 'query': '"software" -"credibility" -"assessment"  -"because" -"however" -"conclude" -"but"  -"i" -"our" -"experience" -"my" '}]
+
     query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
-    #query_dict_list = query_generator.add_api_config_to_queries(yikes_generated_from_old, search_engines)
+
     results = append_daily_search_results(
         query_dict_list,
         config['number_of_runs'],
@@ -278,21 +284,50 @@ def run_daily_search(config_file, write_to_file_flag):
 
     if write_to_file_flag:
         name = "_results_day_" + str(day)
-        write_to_file(name, results, config['results_output_dir'], ".json")
+        write_to_json(name, results, config['results_output_dir'], ".json")
 
     return results
+
+
+def extract_search_results_from_JSON(json_file_path):
+    """
+    Given the output of the search queries, extracts the results(i.e. the URLS, titles from the search results)
+    :param json_file: the json output result from the searches
+    :return: json doc of the relevant extracted data
+    """
+
+    json_data = utils.get_json_from_file(json_file_path)
+    results = json_data["results"]
+    search_results = []
+
+    for seg in results:
+        for item in seg:
+            seg_data = {
+                 "segment_id": item["segment_id"],
+                 "api_info": item["api_info"],
+                 "query": item["query_string"],
+                 "response": item["response_info"],
+            }
+
+            for res in item["results"]:
+                obj = {
+                    "title": res["title"],
+                    "url": res["link"]
+                }
+
+                combined_obj = {**obj, **seg_data}
+                search_results.append(combined_obj)
+
+    search_results = {"search_results": search_results}
+
+    return search_results
+
 
 
 ### TODO: update documentation
 def append_daily_search_results(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir): #flag goes here):
     """
-        Run a full daily search. This function can be set up as a cronjob
-        (or scheduled task on Windows) to search over consecutive days.
-        Refer to the documentation for usage guidelines and descriptions of
-        how the config file should be structured (http://coast_search.readthedocs.io/).
-        Args:
-            config_file: Path to a JSON file containing all relevant information for
-                         conducting the searches.
+
     """
 
     results = []

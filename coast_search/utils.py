@@ -39,7 +39,7 @@ def get_from_file(filename):
 
 def get_from_file_list(file_list):
     """
-    Given a list of file names, reads from each of these and returns... something?
+    Given a list of file names, reads from each of these and returns a dictionary with filename: list of words
     :param file_list:
     :return:
     """

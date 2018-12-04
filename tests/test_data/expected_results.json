@@ -1,0 +1,244 @@
+{
+  "search_results": [
+    {
+      "title": "I Don't Know Python Yet, But Is That a Reason Not to Hire Me?",
+      "url": "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d",
+      "segment_id": 2,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+      "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+      "response": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        }
+    },
+    {
+      "title": "Software development slow because 'Most of our ideas suck' • The ...",
+      "url": "https://www.theregister.co.uk/2018/05/16/most_of_our_ideas_suck_so_lets_have_more/",
+      "segment_id": 2,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+      "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+      "response": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        }
+    },
+    {
+      "title": "Apple CEO Tim Cook: learning to code is important because ...",
+      "url": "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791",
+      "segment_id": 2,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+      "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+      "response": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        }
+    },
+    {
+      "title": "I'm a Software Engineer Not a Writer, But I Want To Write",
+      "url": "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
+      "segment_id": 2,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+      "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+      "response": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        }
+    },
+    {
+     "title": "Embedded Software Can Kill But Are We Designing Safely? | EE ...",
+      "url": "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
+      "segment_id": 2,
+      "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+      "response": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        }
+    },
+    {
+     "title": "Because Software",
+      "url": "https://www.because-software.com/",
+      "segment_id": 3,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+      "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+      "response": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        }
+    },
+     {
+     "title": "Therac-25 - Wikipedia",
+       "url": "https://en.wikipedia.org/wiki/Therac-25",
+      "segment_id": 3,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+      "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+       "response": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        }
+    },
+     {
+     "title": "What are shareware, freeware, and public domain programs?",
+       "url": "https://kb.iu.edu/d/afdk",
+      "segment_id": 3,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+      "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+       "response": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        }
+    },
+     {
+       "title": "Freeware - Wikipedia",
+       "url": "https://en.wikipedia.org/wiki/Freeware",
+      "segment_id": 3,
+      "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+      "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+       "response": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        }
+    },
+     {
+       "title": "Weston-based Ultimate Software has loss in fourth quarter, but ...",
+       "url": "http://www.sun-sentinel.com/business/fl-bz-ultimate-software-fourth-quarter-20180206-story.html",
+        "segment_id": 3,
+        "query": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+       "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+       "response": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        }
+    }
+  ]
+}
