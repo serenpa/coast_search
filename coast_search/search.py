@@ -21,9 +21,6 @@ from datetime import date
 from googleapiclient.discovery import build
 
 
-
-
-
 def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
     """
         Query the API, return the results as a list of JSON objects.
@@ -99,18 +96,20 @@ def write_results_to_file(day, result, backup_output_dir):
     ofile.write(str(result))
     ofile.close()
 
-
-def write_to_file(name, result, dir, extension):
+#todo move to utils?
+def write_to_file(name, result, directory, extension):
         """
             Writes to results to a file
             Args:
-                day: The day of the search period that the result has originated
-                     from.
-                result: The output from running the query.
-                backup_output_dir: A directory that can be used for storing results
+                name: desired filename
+                result:
+                directory: A directory that can be used for storing results
                                    as files.
+                extension: the desired file extension, e.g: json or txt
+                result: The output from running the query.
         """
-        dir_path = dir + name + "/"
+        #todo make this work for text file and json
+        dir_path = directory + name + "/"
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
@@ -119,7 +118,7 @@ def write_to_file(name, result, dir, extension):
         ofile.write(str(result))
         ofile.close()
 
-
+#todo move to utils??
 def write_to_json(name, result, dir, extension):
 
         dir_path = dir + name + "/"
@@ -136,11 +135,8 @@ def write_to_json(name, result, dir, extension):
 
 def get_object_to_write(result):
     """
-        Writes the results to the db, for later analysis.
+        Returns the constructed object containing the search results data, for later analysis.
         Args:
-            db: The pymongo db object.
-            day: The day of the search period that the result has originated
-                 from.
             result: The output from running the query.
     """
     result_items = []
@@ -266,7 +262,7 @@ def run_daily_search(config_file, write_to_file_flag):
     dimensions_dict = utils.get_from_file_list(config['dimensions'])
 
     # Now generate query string for each segment
-    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict, "software", 32)
+    generated_query_strings = query_generator.generate_query_strings_n_dimensions(dimensions_dict, "software", 32) #software and 32 from config
 
     # Get API config and place it into list of dictionaries
     api_config = utils.get_json_from_file(config['api_details_file'])
@@ -291,9 +287,9 @@ def run_daily_search(config_file, write_to_file_flag):
 
 def extract_search_results_from_JSON(json_file_path):
     """
-    Given the output of the search queries, extracts the results(i.e. the URLS, titles from the search results)
-    :param json_file: the json output result from the searches
-    :return: json doc of the relevant extracted data
+    Given the filepath to the output of the search queries, extracts the results(i.e. the URLS, titles from the search results)
+    :param json_file_path: the json output result from the searches
+    :return: json obj of the relevant extracted data
     """
 
     json_data = utils.get_json_from_file(json_file_path)
