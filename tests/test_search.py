@@ -22,11 +22,19 @@ class TestSearch(unittest.TestCase):
         #     "topic": ['trustworthy', 'software']
         # }
 
-    def test_write_to_json(self):
+    def test_write_to_file_json(self):
 
         test_dict = {1: 'a', 2: 'b', 'c': 3}
+        search.write_to_file("test_file", test_dict, "/Users/liz/Local Documents/Work/coast_search/tests/test_output/", ".json")
 
-        search.write_to_json("test_file", test_dict, "/Users/liz/Local Documents/Work/coast_search/tests/test_output", ".json")
+        json_data = utils.get_json_from_file("/Users/liz/Local Documents/Work/coast_search/tests/test_output/test_file")
+
+        self.assertEqual(test_dict, json_data)
+
+
+    def test_write_to_file_txt(self):
+        test_string = "test string wow"
+        search.write_to_file("test_file", test_string, "/Users/liz/Local Documents/Work/coast_search/tests/test_output", ".txt")
 
     def test_extract_search_results_from_JSON(self):
         filename = "/Users/liz/Local Documents/Work/coast_search/tests/test_data/results_for_testing_extraction.json"

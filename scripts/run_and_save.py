@@ -1,6 +1,6 @@
 from coast_search import utils
 from coast_search.query_generator import generate_query_strings_n_dimensions, add_api_config_to_queries
-from coast_search.search import append_daily_search_results
+from coast_search.search import run_all_queries
 import sys
 import os
 import datetime
@@ -89,11 +89,11 @@ def run_queries(config, db):
     print("running queries....")
     print("*********************************\n\n")
 
-    results = append_daily_search_results(list(queries_to_run),
-                                          number_of_runs,
-                                          number_of_results,
-                                          day,
-                                          search_backup_dir)
+    results = run_all_queries(list(queries_to_run),
+                              number_of_runs,
+                              number_of_results,
+                              day,
+                              search_backup_dir)
 
     return results
 
