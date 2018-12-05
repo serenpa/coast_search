@@ -10,6 +10,7 @@
 import sys
 import json
 from pathlib import Path
+from datetime import date
 
 
 def get_from_file(filename):
@@ -71,3 +72,19 @@ def get_json_from_file(filename):
             return res
     except Exception as e:
         sys.stdout.write(str(e))
+
+
+def number_of_days_past_start_date(config):
+    """
+    Gets the day number past the start date defined in the config
+    (eg if the start date was a monday and today was a wednedsay the day would be 3
+    :param config: config file configs start_date property
+    :return: number of days past start date
+    """
+    start_date_parts = config['start_date'].split('-')
+    start_date = date(int(start_date_parts[2]), int(start_date_parts[1]), int(start_date_parts[0]))
+
+    # Get the day - starting from one
+    todays_date = date.today()
+    days_past_start_date = (todays_date - start_date).days + 1
+    return days_past_start_date
