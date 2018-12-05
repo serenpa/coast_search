@@ -95,7 +95,7 @@ def write_results_to_file(day, result, backup_output_dir):
     ofile = open(dir_path + str(timestamp) + ".txt", "w", encoding="utf-8")
     ofile.write(str(result))
     ofile.close()
-
+#/Users/liz/Local Documents/Work/coast_search/requirements.txt
 #todo move to utils?
 def write_to_file(name, result, directory, extension):
         """
@@ -109,27 +109,17 @@ def write_to_file(name, result, directory, extension):
                 result: The output from running the query.
         """
         #todo make this work for text file and json
-        dir_path = directory + name + "/"
+        dir_path = directory + "/"
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
         timestamp = time()
-        ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
-        ofile.write(str(result))
-        ofile.close()
+        ofile = open(dir_path + name + "_" + str(timestamp) + extension, "w", encoding="utf-8")
 
-#todo move to utils??
-def write_to_json(name, result, dir, extension):
-
-        dir_path = dir + name + "/"
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
-
-        timestamp = time()
-        ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
-
-        json.dump(result, ofile)
-
+        if extension == ".json":
+            json.dump(result, ofile)
+        else:
+            ofile.write(str(result))
         ofile.close()
 
 
@@ -137,7 +127,10 @@ def get_object_to_write(result):
     """
         Returns the constructed object containing the search results data, for later analysis.
         Args:
-            result: The output from running the query.
+            result: The output from running the query
+        Returns:
+            object_to_write: the constructed object containing desired search result data
+
     """
     result_items = []
     urls = []
@@ -193,14 +186,13 @@ def get_object_to_write(result):
 def run_query(query_string, number_of_runs, number_of_results, api_key, search_engine_id, segment_id, day,
               backup_dir):
     """
-        Runs the query against the Google Custom Search API.
+        Runs the query against the Google Custom Search API. Writes the results to file and appends them to the extracted results list.
         Refer to the documentation for usage guidelines and descriptions of
         what each parameter means (http://coast_search.readthedocs.io/).
         Args:
-            db: The pymongo db object.
             query_string: The query string to run.
             number_of_runs: The number of runs you wish to be repeat for each
-                            day. Notfig = utils.get_json_from_file(config['api_details_file']e, the free version of the Custom Search API
+                            day. Note, the free version of the Custom Search API
                             is limited to 100 searches per day. Each search
                             returns 10 results.
             number_of_results: The number of results you wish to be returned.
@@ -215,6 +207,8 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
                  from.
             backup_dir: A directory that can be used for storing results
                         as files.
+        Returns: extracted_results: list of results
+
     """
     results = []
     for i in range(0, number_of_runs):
@@ -226,8 +220,9 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
     extracted_results = []
 
     for res in results:
-        #todo update to use new write to file method
-        write_results_to_file(day, res, backup_dir)  # as a backup incase something goes wrong
+        filename = "day_" + str(day)
+        write_to_file(filename, res, backup_dir, ".txt")
+        # write_results_to_file(day, res, backup_dir)  # as a backup incase something goes wrong
         logging.info("Segment {0} : Run {1} : Written to file.\n".format(segment_id, i + 1))
 
         extracted_results.append(get_object_to_write(res))
@@ -246,6 +241,7 @@ def run_daily_search(config_file, write_to_file_flag):
             config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
             write_to_file_flag: boolean flag for writing to file
+        Returns:
     """
     config = utils.get_json_from_file(config_file)
 
@@ -265,7 +261,7 @@ def run_daily_search(config_file, write_to_file_flag):
 
     query_dict_list = query_generator.add_api_config_to_queries(generated_query_strings, search_engines)
 
-    results = append_daily_search_results(
+    results = run_all_queries(
         query_dict_list,
         config['number_of_runs'],
         config['number_of_results'],
@@ -283,8 +279,10 @@ def run_daily_search(config_file, write_to_file_flag):
 def extract_search_results_from_JSON(json_file_path):
     """
     Given the filepath to the output of the search queries, extracts the results(i.e. the URLS, titles from the search results)
-    :param json_file_path: the json output result from the searches
-    :return: json obj of the relevant extracted data
+    Args:
+        json_file_path: the json output result from the searches
+    Returns:
+         json obj of the relevant extracted data
     """
 
     json_data = utils.get_json_from_file(json_file_path)
@@ -314,11 +312,17 @@ def extract_search_results_from_JSON(json_file_path):
     return search_results
 
 
-
-### TODO: update documentation
-def append_daily_search_results(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir): #flag goes here):
+def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir):
     """
-
+    Given a list of queries and configuration parameters, calls the method run_query for each query object in the given list.
+    Args:
+        query_dict_list: list of query data for all of the queries wanting to be searched
+        number_of_runs: number of desired runs (from config file)
+        number_of_results: number of desired results (from config file)
+        day: Day number in search process (number of days since start date)
+        search_backup_dir: location to store file output of searches
+    Returns:
+        object containing results of all of the queries
     """
 
     results = []
