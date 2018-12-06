@@ -1,13 +1,13 @@
 {
-  "dimensions": ["/Users/stefanhall/Local/Documents/coast_search/tests/test_data/search_dimensions/topic.txt",
-    "/Users/stefanhall/Local/Documents/coast_search/tests/test_data/search_dimensions/reasoning.txt","/Users/stefanhall/Local/Documents/coast_search/tests/test_data/search_dimensions/experience.txt"],
+  "dimensions": ["/Users/liz/Local/coast_search/tests/test_data/search_dimensions/experience.txt",
+    "/Users/liz/Local/coast_search/tests/test_data/search_dimensions/reasoning.txt","/Users/liz/Local/coast_search/tests/test_data/search_dimensions/topic.txt"],
   "max_keywords": 32,
-  "api_details_file": "/Users/stefanhall/Local/Documents/coast_search/tests/test_data/test_api_config.json",
+  "api_details_file": "/Users/liz/Local/files/api_config.json",
   "number_of_runs": 1,
   "number_of_results": 100,
-  "search_backup_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup",
-  "results_output_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup",
-  "logging_dir": "/Users/liz/Local Documents/Work/coast_search/outputs/search_backup/log.txt",
-  "start_date": "26-11-2018"
+  "search_backup_dir": "/Users/liz/Local/files/outputs/search_backup",
+  "results_output_dir": "/Users/liz/Local/files/outputs/search_backup",
+  "logging_dir": "/Users/liz/Local/files/outputs/search_backup/log.txt",
+  "start_date": "6-12-2018"
 
 }
