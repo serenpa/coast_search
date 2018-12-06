@@ -16,7 +16,6 @@ from coast_search import utils
 from coast_search import query_generator
 
 from time import time, sleep
-from datetime import date
 
 from googleapiclient.discovery import build
 
@@ -288,6 +287,35 @@ def extract_search_results_from_JSON(json_file_path):
 
     return search_results
 
+def deduplicate_urls(filepath):
+    """
+    function to create and return a list of deduplicated URLS
+    Args:
+        filepath: filepath to the json
+    Returns:
+    """
+    deduplicated_urls = []
+    json_data = utils.get_json_from_file(filepath)
+
+    for seg in json_data["results"]:
+        for item in seg:
+            urls = item["links"]
+            dedup = set(urls)
+            deduplicated_urls = deduplicated_urls + list(dedup)
+
+    if len(set(deduplicated_urls)) != len(deduplicated_urls):
+        return {
+            "deduplicated_urls": deduplicated_urls,
+            "warning": "same url found across more than 1 segment"
+        }
+
+    else:
+        return {
+            "deduplicated_urls": deduplicated_urls
+        }
+
+
+
 
 def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir):
     """
@@ -319,3 +347,5 @@ def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, sea
     return {
         "results": results
     }
+
+
