@@ -75,28 +75,6 @@ def queryAPI(query, number_of_results, api_key, search_engine_id, segment_id):
     return result_list
 
 
-def write_results_to_file(day, result, backup_output_dir):
-    """
-        Writes the results to a txt file, just incase something goes wrong with
-        writing to the database.
-        Args:
-            day: The day of the search period that the result has originated
-                 from.
-            result: The output from running the query.
-            backup_output_dir: A directory that can be used for storing results
-                               as files.
-    """
-    #todo get rid of this
-    dir_path = backup_output_dir + "day_" + str(day) + "/"
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
-
-    timestamp = time()
-    ofile = open(dir_path + str(timestamp) + ".txt", "w", encoding="utf-8")
-    ofile.write(str(result))
-    ofile.close()
-#/Users/liz/Local Documents/Work/coast_search/requirements.txt
-#todo move to utils?
 def write_to_file(name, result, directory, extension):
         """
             Writes to results to a file
@@ -108,7 +86,6 @@ def write_to_file(name, result, directory, extension):
                 extension: the desired file extension, e.g: json or txt
                 result: The output from running the query.
         """
-        #todo make this work for text file and json
         dir_path = directory + "/"
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
@@ -241,7 +218,7 @@ def run_daily_search(config_file, write_to_file_flag):
             config_file: Path to a JSON file containing all relevant information for
                          conducting the searches.
             write_to_file_flag: boolean flag for writing to file
-        Returns:
+        Returns: results from the search
     """
     config = utils.get_json_from_file(config_file)
 
@@ -271,7 +248,7 @@ def run_daily_search(config_file, write_to_file_flag):
 
     if write_to_file_flag:
         name = "_results_day_" + str(day)
-        write_to_json(name, results, config['results_output_dir'], ".json")
+        write_to_file(name, results, config['results_output_dir'], ".json")
 
     return results
 
