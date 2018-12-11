@@ -19,7 +19,7 @@ class TestSearch(unittest.TestCase):
     def test_write_to_file_json(self):
 
         test_dict = {1: 'a', 2: 'b', 'c': 3}
-        search.write_to_file("test_file", test_dict, "/Users/liz/Local Documents/Work/coast_search/tests/test_output/", ".json")
+        search.write_to_file("test_file", test_dict, "/Users/liz/Local/coast_search/tests/test_output/", ".json")
 
 
     def test_write_to_file_txt(self):

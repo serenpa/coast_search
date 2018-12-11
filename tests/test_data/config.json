@@ -4,10 +4,10 @@
   "max_keywords": 32,
   "api_details_file": "/Users/liz/Local/files/api_config.json",
   "number_of_runs": 1,
-  "number_of_results": 100,
-  "search_backup_dir": "/Users/liz/Local/files/outputs/search_backup",
-  "results_output_dir": "/Users/liz/Local/files/outputs/search_backup",
-  "logging_dir": "/Users/liz/Local/files/outputs/search_backup/log.txt",
-  "start_date": "6-12-2018"
-
+  "number_of_results": 10,
+  "search_backup_dir": "/Users/liz/Local/files/outputs/search_backup/",
+  "results_output_dir": "/Users/liz/Local/files/outputs/results/",
+  "logging_dir": "/Users/liz/Local/files/outputs/logging/log.txt",
+  "start_date": "11-12-2018",
+  "sleep_wait_time": 1
 }
