@@ -98,6 +98,56 @@ def write_to_file(name, result, directory, extension):
             ofile.write(str(result))
         ofile.close()
 
+        # dir_path = dir + name + "/"
+        # if not os.path.exists(dir_path):
+        #     os.makedirs(dir_path)
+        #
+        # timestamp = time()
+        # ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
+        # ofile.write(str(result))
+        # ofile.close()
+
+def write_results_to_file(day, result, backup_output_dir):
+    """
+        Writes the results to a txt file, just incase something goes wrong with
+        writing to the database.
+        Args:
+            day: The day of the search period that the result has originated
+                 from.
+            result: The output from running the query.
+            backup_output_dir: A directory that can be used for storing results
+                               as files.
+    """
+    #todo get rid of this
+    dir_path = backup_output_dir + "day_" + str(day) + "/"
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
+    timestamp = time()
+    ofile = open(dir_path + str(timestamp) + ".txt", "w", encoding="utf-8")
+    ofile.write(str(result))
+    ofile.close()
+
+
+# def write_to_file(name, result, dir, extension):
+#         """
+#             Writes to results to a file
+#             Args:
+#                 day: The day of the search period that the result has originated
+#                      from.
+#                 result: The output from running the query.
+#                 backup_output_dir: A directory that can be used for storing results
+#                                    as files.
+#         """
+#         dir_path = dir + name + "/"
+#         if not os.path.exists(dir_path):
+#             os.makedirs(dir_path)
+#
+#         timestamp = time()
+#         ofile = open(dir_path + str(timestamp) + extension, "w", encoding="utf-8")
+#         ofile.write(str(result))
+#         ofile.close()
+
 
 def get_object_to_write(result):
     """
@@ -194,10 +244,10 @@ def run_query(query_string, number_of_runs, number_of_results, api_key, search_e
         results += queryAPI(query_string, number_of_results, api_key, search_engine_id, segment_id)
 
     extracted_results = []
-
+    directory = backup_dir + "/" + "results_day_" + str(day)
     for res in results:
         filename = "day_" + str(day)
-        write_to_file(filename, res, backup_dir, ".txt")
+        write_to_file(filename, res, directory, ".txt")
         # write_results_to_file(day, res, backup_dir)  # as a backup incase something goes wrong
         logging.info("Segment {0} : Run {1} : Written to file.\n".format(segment_id, i + 1))
 
