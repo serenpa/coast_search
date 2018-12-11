@@ -28,15 +28,17 @@ class TestSearch(unittest.TestCase):
 
     def test_extract_search_results_from_JSON(self):
         filename = "/Users/liz/Local Documents/Work/coast_search/tests/test_data/results_for_testing_extraction.json"
+        json_data = utils.get_json_from_file(filename)
 
-        result = search.extract_search_results_from_JSON(filename)
+        result = search.extract_search_results_from_JSON(json_data)
         expected = utils.get_json_from_file('/Users/liz/Local Documents/Work/coast_search/tests/test_data/expected_results.json')
 
         self.assertEqual(expected, result)
 
     def test_deduplicate_urls_no_repetiton_between_segments(self):
         filename = "/Users/liz/Local/coast_search/tests/test_data/results_for_testing_dedup.json"
-        deduplicated_urls_object = search.deduplicate_urls(filename)
+        json_data = utils.get_json_from_file(filename)
+        deduplicated_urls_object = search.deduplicate_urls(json_data)
         deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
 
         expected = [
@@ -57,8 +59,8 @@ class TestSearch(unittest.TestCase):
 
     def test_deduplicate_urls_repetiton_between_segments(self):
         filename = "/Users/liz/Local/coast_search/tests/test_data/results_for_testing_dedup_between_seg.json"
-
-        deduplicated_urls_object = search.deduplicate_urls(filename)
+        json_data = utils.get_json_from_file(filename)
+        deduplicated_urls_object = search.deduplicate_urls(json_data)
         deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
 
         expected = [
