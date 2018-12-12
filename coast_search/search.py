@@ -16,6 +16,7 @@ from coast_search import utils
 from coast_search import query_generator
 
 from time import time, sleep
+from collections import Counter
 
 from googleapiclient.discovery import build
 
@@ -294,17 +295,32 @@ def deduplicate_urls(json_data):
     Returns: a list of deduplicated urls. If there is duplication across segments, also returns a warning
     """
     deduplicated_urls = []
+    temp_obj_list = []
 
     for seg in json_data["results"]:
         for item in seg:
             urls = item["links"]
             dedup = set(urls)
             deduplicated_urls = deduplicated_urls + list(dedup)
+            temp_obj_list.append({
+                "seg_id": item["segment_id"],
+                "dedup_list": dedup
+            })
 
     if len(set(deduplicated_urls)) != len(deduplicated_urls):
+        counts = Counter(deduplicated_urls)
+        duplicates = [value for value, count in counts.items() if count > 1]
+        segments = []
+        for url in duplicates:
+            segments.extend(list(obj["seg_id"] for obj in temp_obj_list if url in obj["dedup_list"]))
+
         return {
             "deduplicated_urls": deduplicated_urls,
-            "warning": "same url found across more than 1 segment"
+            "warning": {
+                "message": "same url found across more than 1 segment",
+                "urls": duplicates,
+                "segments": segments
+            }
         }
 
     else:
