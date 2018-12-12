@@ -78,6 +78,8 @@ class TestSearch(unittest.TestCase):
         deduplicated_urls_list.sort()
 
         self.assertEqual(expected, deduplicated_urls_list)
-        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warning"])
+        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warning"]["message"])
+        self.assertEqual(["https://kb.iu.edu/d/afdk"], deduplicated_urls_object["warning"]["urls"])
+        self.assertEqual([2, 3], deduplicated_urls_object["warning"]["segments"])
 
 
