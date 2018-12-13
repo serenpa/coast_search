@@ -222,7 +222,7 @@ def run_daily_search(config_file, write_to_file_flag):
     """
     config = utils.get_json_from_file(config_file)
 
-    logging.basicConfig(filename=config["logging_dir"])
+    logging.basicConfig(filename=config["logging_file"])
 
     day = utils.number_of_days_past_start_date(config)
 

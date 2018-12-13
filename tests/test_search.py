@@ -17,26 +17,25 @@ class TestSearch(unittest.TestCase):
 
 
     def test_write_to_file_json(self):
-
+        # I wrote these to produce a file that I then manually checked.
         test_dict = {1: 'a', 2: 'b', 'c': 3}
-        search.write_to_file("test_file", test_dict, "/Users/liz/Local/coast_search/tests/test_output/", ".json")
-
+        search.write_to_file("test_file", test_dict, "../tests/test_output/", ".json")
 
     def test_write_to_file_txt(self):
         test_string = "test string wow"
-        search.write_to_file("test_file", test_string, "/Users/liz/Local Documents/Work/coast_search/tests/test_output", ".txt")
+        search.write_to_file("test_file", test_string, "../tests/test_output", ".txt")
 
     def test_extract_search_results_from_JSON(self):
-        filename = "/Users/liz/Local Documents/Work/coast_search/tests/test_data/results_for_testing_extraction.json"
+        filename = "../tests/test_data/results_for_testing_extraction.json"
         json_data = utils.get_json_from_file(filename)
 
         result = search.extract_search_results_from_JSON(json_data)
-        expected = utils.get_json_from_file('/Users/liz/Local Documents/Work/coast_search/tests/test_data/expected_results.json')
+        expected = utils.get_json_from_file('../tests/test_data/expected_results.json')
 
         self.assertEqual(expected, result)
 
     def test_deduplicate_urls_no_repetiton_between_segments(self):
-        filename = "/Users/liz/Local/coast_search/tests/test_data/results_for_testing_dedup.json"
+        filename = "../tests/test_data/results_for_testing_dedup.json"
         json_data = utils.get_json_from_file(filename)
         deduplicated_urls_object = search.deduplicate_urls(json_data)
         deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
@@ -58,7 +57,7 @@ class TestSearch(unittest.TestCase):
         self.assertRaises(KeyError, lambda: deduplicated_urls_object["warning"])
 
     def test_deduplicate_urls_repetiton_between_segments(self):
-        filename = "/Users/liz/Local/coast_search/tests/test_data/results_for_testing_dedup_between_seg.json"
+        filename = "../tests/test_data/results_for_testing_dedup_between_seg.json"
         json_data = utils.get_json_from_file(filename)
         deduplicated_urls_object = search.deduplicate_urls(json_data)
         deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
