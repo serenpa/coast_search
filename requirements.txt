@@ -1,1 +1,1 @@
-random_words
+randomwords
