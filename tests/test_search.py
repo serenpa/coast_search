@@ -82,3 +82,30 @@ class TestSearch(unittest.TestCase):
         self.assertEqual([2, 3], deduplicated_urls_object["warning"]["segments"])
 
 
+    def test_deduplicate_urls_repetiton_between_and_within_segments(self):
+        filename = "../tests/test_data/results_for_testing_dedup_within_between.json"
+        json_data = utils.get_json_from_file(filename)
+        deduplicated_urls_object = search.deduplicate_urls(json_data)
+        deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
+
+        expected = [
+            "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d",
+            "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791",
+            "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
+            "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
+            "https://www.because-software.com/",
+            "https://en.wikipedia.org/wiki/Therac-25",
+            "https://kb.iu.edu/d/afdk",
+            "https://kb.iu.edu/d/afdk",
+            "https://en.wikipedia.org/wiki/Freeware"
+        ]
+        expected.sort()
+        deduplicated_urls_list.sort()
+
+        print(deduplicated_urls_object)
+        self.assertEqual(expected, deduplicated_urls_list)
+        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warning"]["message"])
+        self.assertEqual(["https://kb.iu.edu/d/afdk"], deduplicated_urls_object["warning"]["urls"])
+        self.assertEqual([2, 3], deduplicated_urls_object["warning"]["segments"])
+
+
