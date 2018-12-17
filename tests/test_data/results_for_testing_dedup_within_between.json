@@ -1,0 +1,144 @@
+{"results": [
+  [
+      {
+        "segment_id": 2,
+        "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
+        "api_info": {
+          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
+          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+        },
+        "number_of_results_specified": 5,
+        "response_info": {
+          "search_info_total_results": "141000000",
+          "search_time": 0.711297,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:ol3rk1wn-nm",
+              "request_count": 10,
+              "total_results": "141000000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
+            }
+          ]
+        },
+        "results": [
+          {
+            "title": "I Don't Know Python Yet, But Is That a Reason Not to Hire Me?",
+            "link": "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d"
+          },
+          {
+            "title": "I'm a Software Engineer Not a Writer, But I Want To Write",
+            "link": "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6"
+          },
+          {
+            "title": "Apple CEO Tim Cook: learning to code is important because ...",
+            "link": "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791"
+          },
+          {
+            "title": "I'm a Software Engineer Not a Writer, But I Want To Write",
+            "link": "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6"
+          },
+          {
+            "title": "Embedded Software Can Kill But Are We Designing Safely? | EE ...",
+            "link": "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106"
+          },
+          {
+            "title": "Embedded Software Can Kill But Are We Designing Safely? | EE ...",
+            "link": "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106"
+          }
+        ],
+        "links": [
+          "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d",
+          "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791",
+          "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
+          "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
+          "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
+          "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
+          "https://kb.iu.edu/d/afdk"
+        ]
+      }
+    ],
+    [
+      {
+        "segment_id": 3,
+        "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+        "api_info": {
+          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
+          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+        },
+        "number_of_results_specified": 5,
+        "response_info": {
+          "search_info_total_results": "11200000",
+          "search_time": 0.25084,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:53heseegdb0",
+              "request_count": 10,
+              "total_results": "11200000",
+              "start_index": 1,
+              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        },
+        "results": [
+          {
+            "title": "Because Software",
+            "link": "https://www.because-software.com/"
+          },
+          {
+            "title": "Therac-25 - Wikipedia",
+            "link": "https://en.wikipedia.org/wiki/Therac-25"
+          },
+          {
+            "title": "What are shareware, freeware, and public domain programs?",
+            "link": "https://kb.iu.edu/d/afdk"
+          },
+          {
+            "title": "Freeware - Wikipedia",
+            "link": "https://en.wikipedia.org/wiki/Freeware"
+          },
+          {
+            "title": "Freeware - Wikipedia",
+            "link": "https://en.wikipedia.org/wiki/Freeware"
+          }
+        ],
+        "links": [
+          "https://www.because-software.com/",
+          "https://en.wikipedia.org/wiki/Therac-25",
+          "https://kb.iu.edu/d/afdk",
+          "https://en.wikipedia.org/wiki/Freeware",
+          "https://en.wikipedia.org/wiki/Freeware"
+        ]
+      }
+    ],
+    [
+      {
+        "segment_id": 1,
+        "query_string": "\"software\" -\"trustworthy\" -\"software\" -\"because\" -\"however\" -\"conclude\" -\"but\" -\"for example\" -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
+        "api_info": {
+          "api_key": "AIzaSyD0FM07bo3J2RHdc66WD2VMMpriBacP7qc",
+          "search_engine_id": "011602665443228351936:zve4u1z0uus"
+        },
+        "number_of_results_specified": 10,
+        "response_info": {
+          "search_info_total_results": "0",
+          "search_time": 1.838401,
+          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+          "requests": [
+            {
+              "request_cx": "011602665443228351936:zve4u1z0uus",
+              "request_count": 10,
+              "total_results": "0",
+              "start_index": 1,
+              "search_terms": "\"software\" -\"trustworthy\" -\"software\" -\"because\" -\"however\" -\"conclude\" -\"but\" -\"for example\" -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+            }
+          ]
+        },
+        "results": [],
+        "links": []
+      }
+    ]
+  ]
+}
