@@ -4,8 +4,8 @@
         "segment_id": 2,
         "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
         "api_info": {
-          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
-          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
+          "api_key": "000",
+          "search_engine_id": "911"
         },
         "number_of_results_specified": 5,
         "response_info": {
@@ -59,8 +59,8 @@
         "segment_id": 3,
         "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
         "api_info": {
-          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
-          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
+          "api_key": "000",
+          "search_engine_id": "911"
         },
         "number_of_results_specified": 5,
         "response_info": {
@@ -113,8 +113,8 @@
         "segment_id": 1,
         "query_string": "\"software\" -\"trustworthy\" -\"software\" -\"because\" -\"however\" -\"conclude\" -\"but\" -\"for example\" -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
         "api_info": {
-          "api_key": "AIzaSyD0FM07bo3J2RHdc66WD2VMMpriBacP7qc",
-          "search_engine_id": "011602665443228351936:zve4u1z0uus"
+          "api_key": "000",
+          "search_engine_id": "011"
         },
         "number_of_results_specified": 10,
         "response_info": {
