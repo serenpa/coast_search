@@ -12,7 +12,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    "random_words"
+    "randomwords",
+    "google-api-python-client"
 ]
 
 setup_requirements = [

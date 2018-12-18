@@ -75,7 +75,7 @@ def generate_and_save_queries(config, db):
             print("\t", query["query"])
 
 
-def run_queries(config, db):
+def  run_queries(config, db):
     number_of_runs = config.get("number_of_runs")
     number_of_results = config.get("number_of_results")
     search_backup_dir = config.get("search_backup_dir")
