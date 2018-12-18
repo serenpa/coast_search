@@ -1,144 +1,477 @@
-{"results": [
-  [
-      {
-        "segment_id": 2,
-        "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")",
-        "api_info": {
-          "api_key": "QAzaSyCyAIqTyP_RyMopahF7eiu8JHMcR3hCaaa",
-          "search_engine_id": "911606765443778351936:pp3rk1aaaaa"
-        },
-        "number_of_results_specified": 5,
-        "response_info": {
-          "search_info_total_results": "141000000",
-          "search_time": 0.711297,
-          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
-          "requests": [
+{
+  "toTestDedupWarnings": [
+    {
+      "_id": 5,
+      "query_batch": 37770927,
+      "date": "2018-12-10 15:43:08.280530",
+      "results": [
+        {
+          "links": [
+            "https://www.sciencedirect.com/science/article/pii/016981419400076F",
+            "https://www.scrumguides.org/scrum-guide.html",
+            "https://app.rexsoftware.com/login",
+            "https://www.vive.com/eu/setup/",
+            "https://toggl.com/stages-of-team-development/",
+            "https://courses.lumenlearning.com/suny-principlesmanagement/chapter/reading-the-five-stages-of-team-development/",
+            "https://www.scrum.org/resources/what-is-a-scrum-development-team",
+            "https://www.forbes.com/sites/forbescoachescouncil/2016/10/14/13-characteristics-of-a-high-performing-team-and-how-leaders-can-foster-them/",
+            "https://ieeexplore.ieee.org/document/6462711/",
+            "https://www.mindtools.com/pages/article/newLDR_86.htm",
+            "https://www.researchgate.net/publication/222356192_Team_work_in_research_and_development_organizations_The_characteristics_of_successful_teams",
+            "https://www.barryovereem.com/characteristics-of-a-great-development-team/"
+          ],
+          "results": [
             {
-              "request_cx": "011602665443228351936:ol3rk1wn-nm",
-              "request_count": 10,
-              "total_results": "141000000",
-              "start_index": 1,
-              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") AND (\"i\" OR \"me\" OR \"our\" OR \"we\" OR \"in my experience\")"
-            }
-          ]
-        },
-        "results": [
-          {
-            "title": "I Don't Know Python Yet, But Is That a Reason Not to Hire Me?",
-            "link": "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d"
-          },
-          {
-            "title": "I'm a Software Engineer Not a Writer, But I Want To Write",
-            "link": "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6"
-          },
-          {
-            "title": "Apple CEO Tim Cook: learning to code is important because ...",
-            "link": "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791"
-          },
-          {
-            "title": "I'm a Software Engineer Not a Writer, But I Want To Write",
-            "link": "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6"
-          },
-          {
-            "title": "Embedded Software Can Kill But Are We Designing Safely? | EE ...",
-            "link": "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106"
-          },
-          {
-            "title": "Embedded Software Can Kill But Are We Designing Safely? | EE ...",
-            "link": "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106"
-          }
-        ],
-        "links": [
-          "https://medium.com/s/story/whats-wrong-with-software-development-language-cart-before-the-engineering-horse-c477df24e94d",
-          "https://www.msnbc.com/msnbc/watch/apple-ceo-tim-cook-learning-to-code-is-important-because-software-touches-everything-we-do-1204860483791",
-          "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
-          "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
-          "https://www.eetimes.com/author.asp?section_id=36&doc_id=1329106",
-          "https://writingcooperative.com/im-a-software-engineer-not-a-writer-but-i-want-to-write-6fa9af8290b6",
-          "https://kb.iu.edu/d/afdk"
-        ]
-      }
-    ],
-    [
-      {
-        "segment_id": 3,
-        "query_string": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
-        "api_info": {
-          "api_key": "AIzaqQyApD5bozzzzzb7l9RPOrEW8Rwh4l8bbbb",
-          "search_engine_id": "911612665883228359936:53bbbbbbbb0"
-        },
-        "number_of_results_specified": 5,
-        "response_info": {
-          "search_info_total_results": "11200000",
-          "search_time": 0.25084,
-          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
-          "requests": [
+              "link": "https://www.sciencedirect.com/science/article/pii/016981419400076F",
+              "title": "Team work in research and development organizations: The ..."
+            },
             {
-              "request_cx": "011602665443228351936:53heseegdb0",
-              "request_count": 10,
-              "total_results": "11200000",
-              "start_index": 1,
-              "search_terms": "(\"trustworthy\" OR \"software\") AND (\"because\" OR \"however\" OR \"conclude\" OR \"but\" OR \"for example\") -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
-            }
-          ]
-        },
-        "results": [
-          {
-            "title": "Because Software",
-            "link": "https://www.because-software.com/"
-          },
-          {
-            "title": "Therac-25 - Wikipedia",
-            "link": "https://en.wikipedia.org/wiki/Therac-25"
-          },
-          {
-            "title": "What are shareware, freeware, and public domain programs?",
-            "link": "https://kb.iu.edu/d/afdk"
-          },
-          {
-            "title": "Freeware - Wikipedia",
-            "link": "https://en.wikipedia.org/wiki/Freeware"
-          },
-          {
-            "title": "Freeware - Wikipedia",
-            "link": "https://en.wikipedia.org/wiki/Freeware"
-          }
-        ],
-        "links": [
-          "https://www.because-software.com/",
-          "https://en.wikipedia.org/wiki/Therac-25",
-          "https://kb.iu.edu/d/afdk",
-          "https://en.wikipedia.org/wiki/Freeware",
-          "https://en.wikipedia.org/wiki/Freeware"
-        ]
-      }
-    ],
-    [
-      {
-        "segment_id": 1,
-        "query_string": "\"software\" -\"trustworthy\" -\"software\" -\"because\" -\"however\" -\"conclude\" -\"but\" -\"for example\" -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" ",
-        "api_info": {
-          "api_key": "AIzaSyD0FM07bo3J2RHdc66WD2VMMpriBacP7qc",
-          "search_engine_id": "011602665443228351936:zve4u1z0uus"
-        },
-        "number_of_results_specified": 10,
-        "response_info": {
-          "search_info_total_results": "0",
-          "search_time": 1.838401,
-          "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
-          "requests": [
+              "link": "https://www.scrumguides.org/scrum-guide.html",
+              "title": "Scrum Guide | Scrum Guides"
+            },
             {
-              "request_cx": "011602665443228351936:zve4u1z0uus",
-              "request_count": 10,
-              "total_results": "0",
-              "start_index": 1,
-              "search_terms": "\"software\" -\"trustworthy\" -\"software\" -\"because\" -\"however\" -\"conclude\" -\"but\" -\"for example\" -\"i\" -\"me\" -\"our\" -\"we\" -\"in my experience\" "
+              "link": "https://toggl.com/stages-of-team-development/",
+              "title": "5 Stages of Team Development"
+            },
+            {
+              "link": "https://courses.lumenlearning.com/suny-principlesmanagement/chapter/reading-the-five-stages-of-team-development/",
+              "title": "The Five Stages of Team Development | Principles of Management"
+            },
+            {
+              "link": "https://www.scrum.org/resources/what-is-a-scrum-development-team",
+              "title": "What is a Scrum Development Team?"
+            },
+            {
+              "link": "https://www.forbes.com/sites/forbescoachescouncil/2016/10/14/13-characteristics-of-a-high-performing-team-and-how-leaders-can-foster-them/",
+              "title": "13 Characteristics Of A High-Performing Team (And How Leaders ..."
+            },
+            {
+              "link": "https://ieeexplore.ieee.org/document/6462711/",
+              "title": "Software Project Team Characteristics and Team Performance ..."
+            },
+            {
+              "link": "https://www.mindtools.com/pages/article/newLDR_86.htm",
+              "title": "Forming, Storming, Norming, and Performing - From MindTools.com"
+            },
+            {
+              "link": "https://www.researchgate.net/publication/222356192_Team_work_in_research_and_development_organizations_The_characteristics_of_successful_teams",
+              "title": "Team work in research and development organizations: The ..."
+            },
+            {
+              "link": "https://www.barryovereem.com/characteristics-of-a-great-development-team/",
+              "title": "The 25 Characteristics of a Great Development Team – Barry ..."
             }
-          ]
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+                "request_count": 10,
+                "request_cx": "008049426584469186224:n5e5kls2gg0",
+                "total_results": "66100000",
+                "start_index": 1
+              }
+            ],
+            "search_info_total_results": "66100000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.66303
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 2
         },
-        "results": [],
-        "links": []
-      }
-    ]
+        {
+          "links": [
+            "https://www.psychologytoday.com/us/blog/head-strong/201801/how-strong-values-sustain-teams-performance",
+            "https://www.projectsmart.co.uk/the-five-stages-of-team-development-a-case-study.php",
+            "https://nam.edu/wp-content/uploads/2015/06/VSRT-Team-Based-Care-Principles-Values.pdf",
+            "http://restlessdevelopment.org/our-values",
+            "https://www.psychologytoday.com/us/blog/cutting-edge-leadership/201301/characteristics-good-work-team-members",
+            "https://techbeacon.com/8-core-values-every-team-should-have",
+            "https://en.wikipedia.org/wiki/Agile_software_development",
+            "https://files.eric.ed.gov/fulltext/EJ1162925.pdf",
+            "https://www.atlassian.com/agile/teams",
+            "https://pdfs.semanticscholar.org/9c19/66f401f8f94251fc2dc759aeaebabe8225dd.pdf"
+          ],
+          "results": [
+            {
+              "link": "https://www.psychologytoday.com/us/blog/head-strong/201801/how-strong-values-sustain-teams-performance",
+              "title": "How Strong Values Sustain a Team's Performance | Psychology Today"
+            },
+            {
+              "link": "https://www.projectsmart.co.uk/the-five-stages-of-team-development-a-case-study.php",
+              "title": "The Five Stages of Team Development: A Case Study"
+            },
+            {
+              "link": "https://nam.edu/wp-content/uploads/2015/06/VSRT-Team-Based-Care-Principles-Values.pdf",
+              "title": "Core Principles & Values of Effective Team-Based Health Care"
+            },
+            {
+              "link": "http://restlessdevelopment.org/our-values",
+              "title": "About Us - Our Values | Restless Development"
+            },
+            {
+              "link": "https://www.psychologytoday.com/us/blog/cutting-edge-leadership/201301/characteristics-good-work-team-members",
+              "title": "Characteristics of Good Work Team Members | Psychology Today"
+            },
+            {
+              "link": "https://techbeacon.com/8-core-values-every-team-should-have",
+              "title": "8 core values every team should have"
+            },
+            {
+              "link": "https://en.wikipedia.org/wiki/Agile_software_development",
+              "title": "Agile software development - Wikipedia"
+            },
+            {
+              "link": "https://files.eric.ed.gov/fulltext/EJ1162925.pdf",
+              "title": "Measuring Learners' Attitudes Toward Team Projects: Scale ..."
+            },
+            {
+              "link": "https://www.atlassian.com/agile/teams",
+              "title": "How to build a kick-ass agile team | Atlassian"
+            },
+            {
+              "link": "https://pdfs.semanticscholar.org/9c19/66f401f8f94251fc2dc759aeaebabe8225dd.pdf",
+              "title": "The Effect of Team Leader Characteristics on Learning, Knowledge ..."
+            }
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+                "request_count": 10,
+                "request_cx": "008049426584469186224:n5e5kls2gg0",
+                "total_results": "67500000",
+                "start_index": 11
+              }
+            ],
+            "search_info_total_results": "67500000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.348241
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 2
+        },
+        {
+          "links": [
+            "https://hbr.org/2018/04/how-to-establish-values-on-a-small-team",
+            "https://www.smartsheet.com/comprehensive-guide-values-principles-agile-manifesto",
+            "https://www.open.edu/openlearn/education-development/childhood-youth/early-years-team-work-and-leadership/content-section-2.2",
+            "http://www.ncin.org.uk/view?rid=136",
+            "https://www.scaledagileframework.com/pi-objectives/",
+            "https://workplacepsychology.net/2016/12/03/characteristics-of-a-team-and-barriers-to-effective-team-functioning/",
+            "https://www.emeraldinsight.com/doi/10.1108/13527591011028942",
+            "https://link.springer.com/article/10.1023/A:1009654229352",
+            "https://www.goiam.org/images/articles/headquarters/departments/hpwo-partnerships/ten_characteristics_hpwteam.pdf",
+            "https://www.td.org/insights/developing-your-teams-shared-values"
+          ],
+          "results": [
+            {
+              "link": "https://hbr.org/2018/04/how-to-establish-values-on-a-small-team",
+              "title": "How to Establish Values on a Small Team"
+            },
+            {
+              "link": "https://www.smartsheet.com/comprehensive-guide-values-principles-agile-manifesto",
+              "title": "The 4 Values and 12 Principles of the Agile Manifesto"
+            },
+            {
+              "link": "https://www.open.edu/openlearn/education-development/childhood-youth/early-years-team-work-and-leadership/content-section-2.2",
+              "title": "Early years team work and leadership: 2.2 Values and beliefs in the ..."
+            },
+            {
+              "link": "http://www.ncin.org.uk/view?rid=136",
+              "title": "The Characteristics of an Effective Multidisciplinary Team (MDT)"
+            },
+            {
+              "link": "https://www.scaledagileframework.com/pi-objectives/",
+              "title": "PI Objectives – Scaled Agile Framework"
+            },
+            {
+              "link": "https://workplacepsychology.net/2016/12/03/characteristics-of-a-team-and-barriers-to-effective-team-functioning/",
+              "title": "Characteristics of a Team and Barriers to Effective Team Functioning ..."
+            },
+            {
+              "link": "https://www.emeraldinsight.com/doi/10.1108/13527591011028942",
+              "title": "Characteristics of routine, development and idea networks in teams ..."
+            },
+            {
+              "link": "https://link.springer.com/article/10.1023/A:1009654229352",
+              "title": "Virtual Teams: What are their Characteristics, and Impact on Team ..."
+            },
+            {
+              "link": "https://www.goiam.org/images/articles/headquarters/departments/hpwo-partnerships/ten_characteristics_hpwteam.pdf",
+              "title": "TEN CHARACTERISTICS OF A HIGH- PERFORMANCE WORK TEAM"
+            },
+            {
+              "link": "https://www.td.org/insights/developing-your-teams-shared-values",
+              "title": "Developing Your Team's Shared Values"
+            }
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "(\"Capabilities\" OR \"Behaviours\" OR \"Attitudes\" OR \"Characteristics\" OR \"Values\") AND (\"Team\") AND (\"High performance\" OR \"Low performance\" OR \"Work\" OR \"Performance\" OR \"Productivity\") AND (\"Software engineering\" OR \"Practitioners\" OR \"Development\" OR \"Programming\" OR \"Coding\")",
+                "request_count": 10,
+                "request_cx": "008049426584469186224:n5e5kls2gg0",
+                "total_results": "66100000",
+                "start_index": 21
+              }
+            ],
+            "search_info_total_results": "66100000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.34486
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 2
+        }
+      ]
+    },
+    {
+      "_id": 5,
+      "query_batch": 37770927,
+      "date": "2018-12-10 15:43:08.402319",
+      "results": [
+        {
+          "links": [
+            "https://www.softwarelabel.net/",
+            "http://www.gearboxsoftware.com/?utm_source=rss&utm_medium=rss",
+            "http://www.swhouse.com/",
+            "https://softwarelabel.bandcamp.com/",
+            "https://www.idsoftware.com/",
+            "https://www.yelp-support.com/article/What-is-Yelp-s-recommendation-software?l=en_US",
+            "https://support.razer.com/software",
+            "http://www.akaipro.com/products/software",
+            "https://www.draytek.com/en/download/software/",
+            "https://www.census.gov/data/software.html"
+          ],
+          "results": [
+            {
+              "link": "https://www.softwarelabel.net/",
+              "title": "Software Recording Co. was an electronic music company."
+            },
+            {
+              "link": "http://www.gearboxsoftware.com/?utm_source=rss&utm_medium=rss",
+              "title": "Gearbox Software"
+            },
+            {
+              "link": "http://www.swhouse.com/",
+              "title": "Software House - A Tyco International Company"
+            },
+            {
+              "link": "https://softwarelabel.bandcamp.com/",
+              "title": "Software Recording Co.: Music"
+            },
+            {
+              "link": "https://www.idsoftware.com/",
+              "title": "id Software"
+            },
+            {
+              "link": "https://www.yelp-support.com/article/What-is-Yelp-s-recommendation-software?l=en_US",
+              "title": "What is Yelp's recommendation software? | Support Center | Yelp"
+            },
+            {
+              "link": "https://support.razer.com/software",
+              "title": "Software & Services | Official Razer Support"
+            },
+            {
+              "link": "http://www.akaipro.com/products/software",
+              "title": "AKAI Professional - Software"
+            },
+            {
+              "link": "https://www.draytek.com/en/download/software/",
+              "title": "Software - DrayTek Corp."
+            },
+            {
+              "link": "https://www.census.gov/data/software.html",
+              "title": "Software"
+            }
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+                "request_count": 10,
+                "request_cx": "007054702042733465711:joi-su2gq-q",
+                "total_results": "164000000",
+                "start_index": 1
+              }
+            ],
+            "search_info_total_results": "164000000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.61286
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 1
+        },
+        {
+          "links": [
+            "https://www.lemkesoft.de/",
+            "https://www.nordkeyboards.com/software-tools",
+            "https://www.plantronics.com/us/en/support/downloads-apps",
+            "https://login.patriotsoftware.com/",
+            "https://www.ipcc-nggip.iges.or.jp/software/index.html",
+            "https://www.youtube.com/watch?v=gaGfRKhXPjE",
+            "https://allevi3d.com/software/",
+            "http://www.redlion.net/support/software-firmware",
+            "https://www.usgs.gov/centers/pwrc/software",
+            "https://support.logitech.com/software/lgs"
+          ],
+          "results": [
+            {
+              "link": "https://www.lemkesoft.de/",
+              "title": "Lemke Software: Mac Fotobearbeitung, Mac Diashow, Mac ..."
+            },
+            {
+              "link": "https://www.nordkeyboards.com/software-tools",
+              "title": "Software Tools | Nord Keyboards"
+            },
+            {
+              "link": "https://www.plantronics.com/us/en/support/downloads-apps",
+              "title": "Software Downloads and Apps | Plantronics"
+            },
+            {
+              "link": "https://login.patriotsoftware.com/",
+              "title": "Patriot Software | Login for Employers"
+            },
+            {
+              "link": "https://www.ipcc-nggip.iges.or.jp/software/index.html",
+              "title": "Inventory Software"
+            },
+            {
+              "link": "https://www.youtube.com/watch?v=gaGfRKhXPjE",
+              "title": "Tesla Model 3 V9 Software - YouTube"
+            },
+            {
+              "link": "https://allevi3d.com/software/",
+              "title": "Allevi — Software"
+            },
+            {
+              "link": "http://www.redlion.net/support/software-firmware",
+              "title": "Software & Firmware | Red Lion"
+            },
+            {
+              "link": "https://www.usgs.gov/centers/pwrc/software",
+              "title": "Patuxent Wildlife Research Center - Software"
+            },
+            {
+              "link": "https://support.logitech.com/software/lgs",
+              "title": "Logitech Gaming Software - Logitech Support"
+            }
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+                "request_count": 10,
+                "request_cx": "007054702042733465711:joi-su2gq-q",
+                "total_results": "164000000",
+                "start_index": 11
+              }
+            ],
+            "search_info_total_results": "164000000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.608616
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 1
+        },
+        {
+          "links": [
+            "https://www.allen-heath.com/key-series/sq/sq-software/",
+            "https://app.rexsoftware.com/login",
+            "https://www.deif.com/software",
+            "https://app.rexsoftware.com/login",
+            "https://support.google.com/webmasters/answer/3258249?hl=en",
+            "http://www.vicon.com/products/software",
+            "https://www.precisionhawk.com/software",
+            "https://software.nasa.gov/login",
+            "https://www.oculus.com/rift/setup/",
+            "http://kinemage.biochem.duke.edu/software/",
+            "https://www.apc.com/us/en/tools/download/"
+          ],
+          "results": [
+            {
+              "link": "https://www.allen-heath.com/key-series/sq/sq-software/",
+              "title": "SQ Software - Allen & Heath"
+            },
+            {
+              "link": "https://app.rexsoftware.com/login",
+              "title": "Rex - Usable Real Estate Software"
+            },
+            {
+              "link": "https://www.deif.com/software",
+              "title": "Software"
+            },
+            {
+              "link": "https://support.google.com/webmasters/answer/3258249?hl=en",
+              "title": "Malware and unwanted software - Search Console Help"
+            },
+            {
+              "link": "http://www.vicon.com/products/software",
+              "title": "Motion Capture Software | VICON"
+            },
+            {
+              "link": "https://www.precisionhawk.com/software",
+              "title": "PrecisionHawk Software"
+            },
+            {
+              "link": "https://software.nasa.gov/login",
+              "title": "NASA's Software Catalog: Login"
+            },
+            {
+              "link": "https://www.oculus.com/rift/setup/",
+              "title": "Oculus Rift Setup | Oculus"
+            },
+            {
+              "link": "http://kinemage.biochem.duke.edu/software/",
+              "title": "The Software Page :: Kinemage Website"
+            },
+            {
+              "link": "https://www.apc.com/us/en/tools/download/",
+              "title": "Software / Firmware"
+            }
+          ],
+          "api_info": {
+            "search_engine_id": "000"
+          },
+          "query_string": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+          "response_info": {
+            "requests": [
+              {
+                "search_terms": "\"software\" -\"Team\" -\"Software engineering\" -\"Practitioners\" -\"Development\" -\"Programming\" -\"Coding\" -\"High performance\" -\"Low performance\" -\"Work\" -\"Performance\" -\"Productivity\" -\"Capabilities\" -\"Behaviours\" -\"Attitudes\" -\"Characteristics\" -\"Values\" ",
+                "request_count": 10,
+                "request_cx": "007054702042733465711:joi-su2gq-q",
+                "total_results": "164000000",
+                "start_index": 21
+              }
+            ],
+            "search_info_total_results": "164000000",
+            "url_template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+            "search_time": 0.579289
+          },
+          "number_of_results_specified": 100,
+          "segment_id": 1
+        }
+      ]
+    }
   ]
 }

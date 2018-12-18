@@ -297,39 +297,36 @@ def deduplicate_urls(json_data):
     deduplicated_urls = []
     temp_obj_list = []
 
+    merged_to_segments = {}
+    merged_dedup = {}
     for seg in json_data["results"]:
         for item in seg:
-            urls = item["links"]
-            dedup = set(urls)
-            deduplicated_urls = deduplicated_urls + list(dedup)
-            temp_obj_list.append({
-                "seg_id": item["segment_id"],
-                "dedup_list": dedup
-            })
+            merged_to_segments.setdefault(item["segment_id"], []).extend(item["links"])
+    for k, v in merged_to_segments.items():
+        merged_dedup[k] = set(v)
 
-    if len(set(deduplicated_urls)) != len(deduplicated_urls):
-        counts = Counter(deduplicated_urls)
+    # all_urls = list(set().union(*merged_dedup.values()))
+    all_urls = [item for sublist in merged_dedup.values() for item in sublist]
+
+    if len(all_urls) != len(set(all_urls)):
+        counts = Counter(all_urls)
         duplicates = [value for value, count in counts.items() if count > 1]
-        segments = []
+        segments_with_dup = []
+        warnings = []
         for url in duplicates:
-            segments.extend(list(obj["seg_id"] for obj in temp_obj_list if url in obj["dedup_list"]))
-
+            segments_with_dup.extend([key for (key, value) in merged_dedup.items() if url in value])
+            warnings.append({"url": url, "segments": segments_with_dup})
         return {
-            "deduplicated_urls": deduplicated_urls,
-            "warning": {
+            "deduplicated_urls": list(set(all_urls)),
+            "warnings": {
                 "message": "same url found across more than 1 segment",
-                "urls": duplicates,
-                "segments": segments
+                "occurrences": warnings
             }
         }
-
     else:
         return {
-            "deduplicated_urls": deduplicated_urls
+            "deduplicated_urls": list(set(all_urls))
         }
-
-
-
 
 def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir):
     """

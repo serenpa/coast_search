@@ -68,10 +68,8 @@ class TestSearch(unittest.TestCase):
         self.assertRaises(KeyError, lambda: deduplicated_urls_object["warning"])
 
     def test_deduplicate_urls_repetiton_between_segments(self):
-        filename = "results_for_testing_dedup_between_seg.json"
-        filepath = os.path.join(self.test_data_folder_location, filename)
-
-        json_data = utils.get_json_from_file(filepath)
+        filename = "../tests/test_data/results_for_testing_dedup_between_seg.json"
+        json_data = utils.get_json_from_file(filename)
         deduplicated_urls_object = search.deduplicate_urls(json_data)
         deduplicated_urls_list = deduplicated_urls_object["deduplicated_urls"]
 
@@ -83,13 +81,25 @@ class TestSearch(unittest.TestCase):
             "https://www.because-software.com/",
             "https://en.wikipedia.org/wiki/Therac-25",
             "https://kb.iu.edu/d/afdk",
-            "https://kb.iu.edu/d/afdk",
             "https://en.wikipedia.org/wiki/Freeware"
         ]
         expected.sort()
         deduplicated_urls_list.sort()
 
         self.assertEqual(expected, deduplicated_urls_list)
-        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warning"]["message"])
-        self.assertEqual(["https://kb.iu.edu/d/afdk"], deduplicated_urls_object["warning"]["urls"])
-        self.assertEqual([2, 3], deduplicated_urls_object["warning"]["segments"])
+        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warnings"]["message"])
+        self.assertEqual("https://kb.iu.edu/d/afdk", deduplicated_urls_object["warnings"]["occurrences"][0]["url"])
+        self.assertEqual([2, 3], deduplicated_urls_object["warnings"]["occurrences"][0]["segments"])
+
+    def test_deduplicate_urls_repetiton_between_and_within_segments(self):
+        filename = "../tests/test_data/results_for_testing_dedup_within_between.json"
+        json_data = utils.get_json_from_file(filename)
+        new_json_attempt = {"results": []}
+        for item in json_data["toTestDedupWarnings"]:
+            new_json_attempt["results"].append(item["results"])
+        deduplicated_urls_object = search.deduplicate_urls(new_json_attempt)
+
+        self.assertEqual(61, len(deduplicated_urls_object["deduplicated_urls"]))
+        self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warnings"]["message"])
+        self.assertEqual("https://app.rexsoftware.com/login", deduplicated_urls_object["warnings"]["occurrences"][0]["url"])
+        self.assertEqual([2, 1], deduplicated_urls_object["warnings"]["occurrences"][0]["segments"])
