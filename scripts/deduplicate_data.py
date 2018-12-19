@@ -14,17 +14,17 @@ def getDB(uri, name):
     else:
         return db
 
+
 DB_URL = "mongodb://localhost:27017/test_database"
 DB_NAME = "jim_hpt"
 
-def exec():
 
+def exec():
     db = getDB(DB_URL, DB_NAME)
     print("USING DB", DB_URL, DB_NAME)
 
     results = db.results.find()
     for res in results:
-
         json = {
             'results': [res['results']]
         }
@@ -46,12 +46,17 @@ def exec():
     #     print("WOW", len(urls) == len(flattened))
 
 
-
 def dedup_all_results():
     db = getDB(DB_URL, DB_NAME)
     results = db.results.find()
-    for res in results:
-            print(res)
+    all_results = [x['results'] for x in results]
+
+    json = {
+        'results': all_results
+    }
+
+    deduplicated = search.deduplicate_urls(json)
+    db.all_deduplications.insert_one(deduplicated)
 
 
 if __name__ == '__main__':
