@@ -14,10 +14,11 @@ def getDB(uri, name):
     else:
         return db
 
+DB_URL = "mongodb://localhost:27017/test_database"
+DB_NAME = "jim_hpt"
 
 def exec():
-    DB_URL = "mongodb://localhost:27017/test_database"
-    DB_NAME = "jim_hpt"
+
     db = getDB(DB_URL, DB_NAME)
     print("USING DB", DB_URL, DB_NAME)
 
@@ -46,10 +47,12 @@ def exec():
 
 
 
-
-
-
+def dedup_all_results():
+    db = getDB(DB_URL, DB_NAME)
+    results = db.results.find()
+    for res in results:
+            print(res)
 
 
 if __name__ == '__main__':
-    exec()
+    dedup_all_results()
