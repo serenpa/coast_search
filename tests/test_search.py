@@ -90,7 +90,7 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(expected, deduplicated_urls_list)
         self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warnings"]["message"])
         self.assertEqual("https://kb.iu.edu/d/afdk", deduplicated_urls_object["warnings"]["occurrences"][0]["url"])
-        self.assertEqual([2, 3], deduplicated_urls_object["warnings"]["occurrences"][0]["segments"])
+        self.assertEqual(sorted([2, 3]), sorted(deduplicated_urls_object["warnings"]["occurrences"][0]["segments"]))
 
     def test_deduplicate_urls_repetiton_between_and_within_segments(self):
         filename = "results_for_testing_dedup_within_between.json"
@@ -104,4 +104,4 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(61, len(deduplicated_urls_object["deduplicated_urls"]))
         self.assertEqual("same url found across more than 1 segment", deduplicated_urls_object["warnings"]["message"])
         self.assertEqual("https://app.rexsoftware.com/login", deduplicated_urls_object["warnings"]["occurrences"][0]["url"])
-        self.assertEqual([2, 1], deduplicated_urls_object["warnings"]["occurrences"][0]["segments"])
+        self.assertEqual(sorted([2, 1]), sorted(deduplicated_urls_object["warnings"]["occurrences"][0]["segments"]))
