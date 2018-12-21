@@ -96,3 +96,6 @@ def full_extraction(url):
         "pattern_extraction": pattern_extraction
     }
 
+
+if __name__ == '__main__':
+    pass

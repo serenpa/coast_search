@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import sys
-from ._article_extraction import full_extraction
+from _article_extraction import full_extraction
 
 
 def getDB(uri, name):
@@ -36,12 +36,18 @@ def tryExtract(db):
 def main():
     db = getDB(DB_URL, DB_NAME)
     dedup = db.all_deduplications.find()
-    res = dedup[0]
-    urls = res['deduplicated_urls']
+    result = dedup[0]
+    urls = result['deduplicated_urls']
 
     for url in urls:
-        res = db.to_extract.find_one({"url": url})
-        if not res:
+        query = {
+            "url": url
+        }
+        url_to_extract = db.to_extract.find_one(query)
+        already_extracted = db.extracted_articles.find_one(query)
+        could_not_extract = db.cannot_extract.find_one(query)
+
+        if not url_to_extract and not already_extracted and not could_not_extract:
             print("inserting url", url)
             db.to_extract.insert_one({'url': url})
         else:
@@ -53,3 +59,7 @@ if __name__ == '__main__':
     DB_URL = "mongodb://localhost:27017/test_database"
     DB_NAME = "jim_hpt"
     main()
+
+
+# DB_URL = "mongodb://admin:J45m1n31234@cs15078kn.canterbury.ac.nz:27017"
+# DB_NAME = "jim_hpt"
