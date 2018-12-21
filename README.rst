@@ -26,7 +26,7 @@ Features
 --------
 With COAST_SEARCH you can:
 
-* Generate and run queries based on the multi-dimensional search logic outlined by Rainer and Williams in IST'18_ 
+* Generate and run queries based on the multi-dimensional search logic outlined by Rainer and Williams in `IST'18`_ 
 * Define your own queries to run
 
 .. _IST'18: https://www.sciencedirect.com/science/article/abs/pii/S0950584918302192
