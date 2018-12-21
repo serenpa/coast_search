@@ -29,7 +29,7 @@ setup(
     author="Ashley Williams",
     author_email='ashley.williams@pg.canterbury.ac.nz',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
@@ -50,7 +50,7 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/zedrem/coast_search',
-    version='0.0.1',
+    version='1.0.0',
     zip_safe=False,
     dependency_links=dependency_links
 )

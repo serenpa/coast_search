@@ -1,8 +1,6 @@
 """
-    Title: file_utils.py
-
+    Title: utils.py
     Author: Ashley Williams
-
     Description: A collection of generic utility functions that are used
     throughout coast by various modules relating to reading and writing to
     files.
