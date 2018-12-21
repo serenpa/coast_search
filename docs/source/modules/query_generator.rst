@@ -5,7 +5,7 @@ Query Generator
 
 Introduction
 ------------
-The query generator module contains functions that can be used to generate a set of queries that follow the heuristics proposed by Rainer and Williams in IST'18_
+The query generator module contains functions that can be used to generate a set of queries that follow the heuristics proposed by Rainer and Williams in `IST'18`_
 
 .. _IST'18: https://www.sciencedirect.com/science/article/abs/pii/S0950584918302192
 
