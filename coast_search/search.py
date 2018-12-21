@@ -287,6 +287,7 @@ def extract_search_results_from_JSON(json_data):
 
     return search_results
 
+
 def deduplicate_urls(json_data):
     """
     function to create and return a list of deduplicated URLS
@@ -328,6 +329,7 @@ def deduplicate_urls(json_data):
             "deduplicated_urls": list(set(all_urls))
         }
 
+
 def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, search_backup_dir):
     """
     Given a list of queries and configuration parameters, calls the method run_query for each query object in the given list.
@@ -358,5 +360,3 @@ def run_all_queries(query_dict_list, number_of_runs, number_of_results, day, sea
     return {
         "results": results
     }
-
-
