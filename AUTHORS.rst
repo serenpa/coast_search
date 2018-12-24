@@ -11,6 +11,7 @@ Contributors
 ------------
 
 * Liz Richardson
+* Stefan Hall
 * Adrien Aucher
 
 Want to contribute? See: CONTRIBUTING.rst

@@ -8,7 +8,9 @@
 from __future__ import print_function
 from ._version import get_versions
 
-
+from coast_search import query_generator
+from coast_search import search
+from coast_search import utils
 
 __author__ = 'Ashley Williams'
 __email__ = 'ashley.williams@pg.canterbury.ac.nz'
